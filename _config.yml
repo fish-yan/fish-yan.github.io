@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email: xueyan91@outlook.com
 description: "iOS开发工程师 | 薛焱，Web & make my love | this is my world"
 keyword: "薛焱, fish, fishyan, ios, oc, Objective-C, Swift"
-url: "https://fish-yan.github.io/"              # your host, for absolute URL
+url: "https://fishyan.me/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
 
