@@ -1,0 +1,12 @@
+---
+layout:     post
+title:      "1.2 UWP 应用开发准备篇 "
+subtitle:   " UWP 是 Universal Windows Platform 的简写，即通用 Windows 平台。"
+date:       2017-03-03 22:00:00
+author:     "FishYan"
+header-img: "img/blog-header.png"
+tags:
+    - UWP
+    - Visual Sutdio 2017
+---
+
