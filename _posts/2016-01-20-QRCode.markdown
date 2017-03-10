@@ -10,7 +10,7 @@ tags:
     - 二维码
 ---
 
-####首先声明这个二维码扫描是借助于zxing.
+> 首先声明这个二维码扫描是借助于zxing.
 功能模块都完全封装好了,不过界面合你口味,直接使用就好,如果不合口味,后面告诉你怎么修改.
 
 - 1.cocoaPods导入pod 'LBXScan', '~> 1.1.1'
@@ -19,7 +19,7 @@ tags:
 
 - 2.将XYScan文件夹拖到你的工程中(这个是写好的).
 
-```Objective-C
+```Objc
 //导入头文件
 #import <LBXScanViewController.h>
 #import "SubLBXScanViewController.h"
@@ -40,7 +40,7 @@ tags:
   
   先说SubLBXScanViewController.m中
  
-  ```objective-c
+  ```Objc
 	//原有代码是这样的
 	 LBXScanViewStyle *style = [[LBXScanViewStyle alloc]init];
     style.anmiationStyle = LBXScanViewAnimationStyle_LineMove;

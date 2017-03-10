@@ -18,7 +18,7 @@ tags:
 
 如果不会使用cocoaPods请看这:http://blog.csdn.net/fish_yan_/article/details/50483282
 
-```Objective-C
+```Objc
 pod 'KNSemiModalViewController_hons82', '~> 0.4.4'
 ```
 
@@ -28,7 +28,7 @@ pod 'KNSemiModalViewController_hons82', '~> 0.4.4'
 
 在你需要的viewController中引入头文件,仿照以下方式写
 
-```Objective-C
+```Objc
 //button的方法
 - (IBAction)addShopingButtonAction:(UIButton *)sender {
     //自己创建一个view

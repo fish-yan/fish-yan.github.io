@@ -17,7 +17,7 @@ tags:
 
 下面上代码,看注释就行.
 
-```Objective-C
+```Objc
 //
 //  SearchViewController.m
 //  Search
