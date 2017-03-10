@@ -40,7 +40,7 @@ tags:
 
     如果是第一次安装就不要折腾了，直接选择默认就好。
 
-    ![安装类型](/Users/xueyan/Desktop/IC844317.png)
+    ![安装类型](/img/blog/install.png)
 
     3.2 自定义组件的完整列表如下所示：
 
@@ -111,11 +111,11 @@ tags:
 
 桌面设置
 
-![PC端设置](/Users/xueyan/Desktop/devmode-pc-options.png)
+![PC端设置](/img/blog/setting-pc.png)
 
 手机设置
 
-![手机设置](/Users/xueyan/Desktop/devmode-mob.png)
+![手机设置](/img/blog/setting-mobile.png)
 
 部署 Windows 10 应用
 
