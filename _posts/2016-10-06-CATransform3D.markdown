@@ -78,14 +78,12 @@ CATransform3D CATransform3DMakeTranslation (CGFloat tx, CGFloat ty, CGFloat tz)�
 而上面给的值：[1 0 0 0; 0 1 0 0; 0 0 1 0; tx ty tz 1].
 
 给竖起来后。就发现：
+|tx|ty|tz|1|
+|-|--|--|--|
+|1|0|0|0|
+|0|1|0|0|
+|0|0|1|0|
 
-1    0    0    0
-
-0    1    0    0
-
-0    0    1    0
-
-tx  ty   tz   1
 
 竖起来看就很明显了。
 
