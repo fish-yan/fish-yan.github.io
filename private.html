@@ -51,7 +51,7 @@ header-img: "img/tag-bg.jpg"
   <th width="100">年龄：</td>
   <td >26</td>
   <td width="100">邮箱：</td>
-  <td ><a onmouseover="mover(this)" href="mailto:xueyan_2011@163.com" style="color:#6C92B7"><u>xueyan_2011@163.com</u></a></td>
+  <td ><a onmouseover="mOver(this)" onmouseout="mOut(this)" href="mailto:xueyan_2011@163.com" style="color:#4271AE">xueyan_2011@163.com</a></td>
 </tr>   
 <tr>
   <td>手机：</td>
@@ -86,11 +86,11 @@ header-img: "img/tag-bg.jpg"
 <script>
 function mover(obj)
 {
-obj.style.color="red"
+obj.style.color="#6C92B7"
 }
 
 function mOut(obj)
 {
-obj.style
+obj.style.color="#4271AE"
 }
 </script>
