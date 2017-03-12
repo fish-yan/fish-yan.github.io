@@ -1,11 +1,10 @@
 ---
-layout:     post
-title:      "Swift中的map 和 flatMap 原理及用法"
-subtitle:   "Swift"
+layout:     page
+title:      "个人简历"
+subtitle:   "iOS开发工程师-薛焱"
 date:       2016-12-25 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png"
 tags:
-    - iOS
-    - Swift
+    - 简历
 ---
