@@ -126,7 +126,7 @@ img.shadow {
 }
 .table th,
 .table td {
-  border: 1px solid #eee !important;
+  solid #eee !important;
 }
 hr.small {
   max-width: 100px;
