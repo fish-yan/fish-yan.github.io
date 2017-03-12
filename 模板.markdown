@@ -6,5 +6,23 @@ date:       2016-12-25 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png"
 tags:
-    - 简历
+    
 ---
+
+<table border="1">
+<tr>
+  <th rowspan=3><img src="https://github.com/fish-yan/fish-yan.github.io/blob/master/img/myself.jpg?raw=true"/></td>
+  <td><p style="font-size:20px">薛焱<p></td>
+  <td colspan=3>男</td>
+</tr>   
+<tr>
+  <td>目前公司：</td>
+  <td colspan=3>重庆车杰盟科技有限公司 </td>
+</tr>
+<tr>
+  <td>目前职位：</td>
+  <td>iOS开发工程师</td>
+  <td>工作年限：</td>
+  <td>3年</td>
+</tr>
+</table>
