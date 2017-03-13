@@ -70,7 +70,7 @@ kramdown:
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "you are my world ! "
+sidebar-about-description: "You Are My World ! "
 sidebar-avatar: /img/fishyan-header.JPG      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
