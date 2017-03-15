@@ -4,7 +4,8 @@ title:      "iOS 动画 Animation-0-续: 详解 CALayer 和 UIView 的区别和�
 subtitle:   "iOS 动画 Animation"
 date:       2016-09-11 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

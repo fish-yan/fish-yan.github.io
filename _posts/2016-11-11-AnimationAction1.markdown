@@ -4,7 +4,8 @@ title:      "iOS 动画Animation - 6 - 1：实战练习之圆弧下拉动效"
 subtitle:   "iOS 动画 Animation"
 date:       2016-11-11 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

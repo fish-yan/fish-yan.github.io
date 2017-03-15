@@ -4,7 +4,8 @@ title:      "iOS开发：关于IPV6"
 subtitle:   ""
 date:       2016-06-29 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
 ---

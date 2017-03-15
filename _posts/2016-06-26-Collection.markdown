@@ -4,7 +4,8 @@ title:      "iOS 9 新特性：开发者集合篇（不断更新中......）"
 subtitle:   "iOS 9 学习系列"
 date:       2016-06-26 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 9 新特性

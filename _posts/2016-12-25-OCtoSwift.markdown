@@ -4,7 +4,8 @@ title:      "优雅的从Objective-C转向Swift"
 subtitle:   "Swift"
 date:       2016-12-25 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - Swift

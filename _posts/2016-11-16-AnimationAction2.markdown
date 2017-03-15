@@ -4,7 +4,8 @@ title:      "iOS 动画Animation - 6 - 2：实战练习之淘宝购物车动画�
 subtitle:   "iOS 动画 Animation"
 date:       2016-11-16 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

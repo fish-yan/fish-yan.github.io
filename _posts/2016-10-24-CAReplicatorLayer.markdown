@@ -4,7 +4,8 @@ title:      "iOS 动画Animation-4-4: CALayer子类：CAReplicatorLayer"
 subtitle:   "iOS 动画 Animation"
 date:       2016-10-24 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

@@ -1,10 +1,11 @@
 ---
-layout:     default
+layout:     post
 title:      "Swift中的map 和 flatMap 原理及用法"
 subtitle:   "Swift"
 date:       2017-01-09 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - Swift

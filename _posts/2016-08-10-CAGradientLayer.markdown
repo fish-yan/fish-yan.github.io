@@ -4,7 +4,8 @@ title:      "iOS 动画 Animation-0-5：CALayer十则示例-CAGradientLayer"
 subtitle:   "iOS 动画 Animation"
 date:       2016-08-10 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

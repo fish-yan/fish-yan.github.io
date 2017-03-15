@@ -4,7 +4,8 @@ title:      "iOS 视图控制器转场详解"
 subtitle:   "iOS 转场，结合动画使用，但不属于动画范畴"
 date:       2016-12-15 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
 ---

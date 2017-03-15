@@ -4,7 +4,8 @@ title:      "Swift编程规范之 Documentation/Comments"
 subtitle:   "Swift"
 date:       2016-12-29 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - Swift

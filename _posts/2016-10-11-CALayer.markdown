@@ -4,7 +4,8 @@ title:      "iOS 动画Animation-4-2: CALayer子类：CAGradientLayer，CATextLa
 subtitle:   "iOS 动画 Animation"
 date:       2016-10-11 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

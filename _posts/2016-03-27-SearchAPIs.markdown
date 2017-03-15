@@ -4,7 +4,8 @@ title:      "iOS 9 学习系列: Search APIs"
 subtitle:   "iOS 9 学习系列"
 date:       2016-03-27 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 9 新特性

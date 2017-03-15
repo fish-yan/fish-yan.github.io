@@ -4,7 +4,8 @@ title:      "iOS 加密"
 subtitle:   "iOS AES加密, DES加密, MD5加密,SHA1加密,  BASE64加密"
 date:       2016-07-06 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
 

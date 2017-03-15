@@ -4,7 +4,8 @@ title:      "iOS 动画 Animation-1: 动画基础：Block动画"
 subtitle:   "iOS 动画 Animation"
 date:       2016-09-19 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画

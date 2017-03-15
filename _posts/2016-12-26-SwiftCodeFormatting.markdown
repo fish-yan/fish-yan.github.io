@@ -4,7 +4,8 @@ title:      "Swift编程规范之 Code Formatting"
 subtitle:   "Swift"
 date:       2016-12-26 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - Swift

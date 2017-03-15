@@ -4,7 +4,8 @@ title:      "二维码扫描"
 subtitle:   "功能模块都完全封装好了,不过界面合你口味,直接使用就好,如果不合口味,后面告诉你怎么修改. "
 date:       2016-01-20 19:23:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - 二维码

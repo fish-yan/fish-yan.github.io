@@ -4,7 +4,8 @@ title:      "购物车动画"
 subtitle:   "由于自己需要就写了个购物车动画，仅供参考"
 date:       2015-11-18 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - UWP
     - Visual Sutdio 2017

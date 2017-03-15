@@ -1,10 +1,11 @@
 ---
-layout:     default
+layout:     post
 title:      "Swift中10个简单易用的单行代码，提高效率，晋升逼格"
 subtitle:   "Swift"
 date:       2016-12-25 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - Swift

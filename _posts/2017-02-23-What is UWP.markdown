@@ -1,10 +1,11 @@
 ---
-layout:     default
+layout:     post
 title:      "1.1 UWP应用简介"
 subtitle:   " UWP 是 Universal Windows Platform 的简写，即通用 Windows 平台。"
 date:       2017-02-23 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - UWP
 ---

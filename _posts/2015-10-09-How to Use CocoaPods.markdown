@@ -4,7 +4,8 @@ title:      " CocoaPods 安装和使用教程"
 subtitle:   " CocoaPods 是一款特别好用的第三方SDK管理工具，如果还没有开始使用的童鞋，一定要赶紧用起来了。"
 date:       2015-10-09 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - CocoaPods

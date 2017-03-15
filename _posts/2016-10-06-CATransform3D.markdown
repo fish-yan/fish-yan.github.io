@@ -4,7 +4,8 @@ title:      "iOS 动画Animation-3: CATransform3D 特效详解"
 subtitle:   "iOS 动画 Animation"
 date:       2016-10-06 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png"
+header-img: "img/blog-header.png" 
+catalog:    true
 tags:
     - iOS
     - iOS 动画
@@ -79,7 +80,7 @@ CATransform3D CATransform3DMakeTranslation (CGFloat tx, CGFloat ty, CGFloat tz)�
 
 给竖起来后。就发现：
 |tx|ty|tz|1|
-|-|--|--|--|
+|-|-|-|-|
 |1|0|0|0|
 |0|1|0|0|
 |0|0|1|0|
