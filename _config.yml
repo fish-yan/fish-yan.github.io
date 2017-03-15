@@ -63,8 +63,8 @@ kramdown:
 # ba_track_id: [your track id]
 
 # Google Analytics
-#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-#ga_domain: huangxuan.me
+ga_track_id: 'UA-93742623-1'            # Format: UA-xxxxxx-xx
+ga_domain: fishyan.me
 
 
 
