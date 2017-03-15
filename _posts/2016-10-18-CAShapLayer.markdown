@@ -17,9 +17,10 @@ tags:
 下面进入正题：今天介绍CAShapeLayer
 
 - CAShapeLayer作为CALayer(关于CALayer参考：[iOS动画Animation-4-1:CALayer](http://blog.csdn.net/fish_yan_/article/details/51139953))的子类，他有多了那些常用的API呢？
+
 |API |  描述 |
-|:-- |: ---|
-| Path | 这是一个比较重要的属性, 与UIBezier结合, 可以随心所欲的绘制出各种图形
+|:-:|:-|
+| Path | 这是一个比较重要的属性, 与UIBezier结合, 可以随心所欲的绘制出各种图形|
 |FillColor|填充颜色(看名字就懂)|
 |FillRule|填充规则|
 |StrokeColor|描边颜色|
