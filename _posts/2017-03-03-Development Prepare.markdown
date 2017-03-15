@@ -5,6 +5,7 @@ subtitle:   " UWP 是 Universal Windows Platform 的简写，即通用 Windows �
 date:       2017-03-03 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png" 
+header-mask: 0.3
 catalog:    true
 tags:
     - UWP
