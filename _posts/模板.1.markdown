@@ -1,0 +1,34 @@
+---
+layout:     post
+title:      "UWP-1"
+subtitle:   "Swift"
+date:       2017-04-25 22:00:00
+author:     "FishYan"
+header-img: "img/blog-header.png" 
+catalog:    true
+tags:
+    - iOS
+    - Swift
+---
+
+
+<video src="http://flv2.bn.netease.com/videolib3/1511/26/wOQdx1396/SD/wOQdx1396-mobile.mp4" width="320" height="240" controls="controls">
+Your browser does not support the video tag.
+</video>
+
+
+UWP 通用应用可以运行在 任何 Universal Windows Platform 平台上，包含 Xbox， Microsoft Hub ，Hololens
+
+Windows 通用平台就是你可以运用同一个工具，同一套API开发应用程序，在不同的Windows设备上运行，以及适应不同设备不同额特性
+
+这一系列视频是为初学者准备的
+
+需要有C#的知识和会使用visual studio 
+
+如果你是一个很有这方面经验的程序员，你会感觉本课程十分慢。你可以看看另一个系列：[Windows开发者指南](https://bit.do/develops-guide-to-windows-10)
+
+提前说明有几个问题：
+1.必须使用window 10 
+2.你必须是用visual studio 2015 或以后版本，目前是 visual studio 2017
+3.备选：你需要一台运行Windows 10 的手机，只好电脑可以运行Windows 10 手机模拟器，现在大多数手机都支持运行Windows 10 手机模拟器，但不是所有的。
+
