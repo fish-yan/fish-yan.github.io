@@ -34,10 +34,13 @@ tags:
 **名词解释**
 
 > UWP 通用应用可以运行在 任何 Universal Windows Platform 平台上，包含 Xbox， Microsoft Hub ，Hololens
+
 > Windows 通用平台就是你可以运用同一个工具，同一套API开发应用程序，在不同的Windows设备上运行，以及适应不同设备不同额特性
 
 > 视频来源Channel 字幕翻译自bilibili-微软信仰中心
 
 > **同步发布**
+
 >[今日头条](http://www.toutiao.com/i6413124649491628546/)
+
 >[FishYan博客](http://fishyan.me/2017/04/25/UWP1-3SeriesWrapUp/)
