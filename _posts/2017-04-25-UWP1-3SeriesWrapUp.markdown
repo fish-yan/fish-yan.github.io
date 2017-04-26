@@ -12,7 +12,7 @@ tags:
 ---
 
 
-<video src="http://i.snssdk.com/video/playcode/1/toutiao/9ea3edb484884ff29709bad504f9aa25" controls="controls">
+<video src="http://v3.365yg.com/b29e3057ba0f5ea407a8ff37c1d7b362/59003590/video/m/220bc9a833cc3ef4bd280405bf1b32e337c1146156000039b6e2fbea35/" controls="controls">
 
 </video>
 
