@@ -12,7 +12,7 @@ tags:
 ---
 
 
-<video src="http://v3.365yg.com/b29e3057ba0f5ea407a8ff37c1d7b362/59003590/video/m/220bc9a833cc3ef4bd280405bf1b32e337c1146156000039b6e2fbea35/" controls="controls">
+<video src="http://v6.365yg.com/video/m/220bc9a833cc3ef4bd280405bf1b32e337c1146156000039b6e2fbea35/?Expires=1493189756&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=BcQqaj%2BbygPUfVF6LGkBDJWDbZU%3D" controls="controls">
 
 </video>
 
