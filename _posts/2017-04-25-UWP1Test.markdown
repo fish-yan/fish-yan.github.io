@@ -12,7 +12,7 @@ tags:
 ---
 
 
-<video src="http://flv2.bn.netease.com/videolib3/1511/26/wOQdx1396/SD/wOQdx1396-mobile.mp4" width="320" height="240" controls="controls">
+<video src="https://www.bilibili.com/video/av7997007/" width="320" height="240" controls="controls">
 Your browser does not support the video tag.
 </video>
 
