@@ -11,7 +11,7 @@ tags:
     - Visual Sutdio
 ---
 
-<video src="http://v1.365yg.com/fda1300cbe9ead1cd3fe44523fd605a1/59017ae8/video/m/220c3f2d22740014b72b0eacabc054a1d8411462c8000014ad5688eff1/" controls="controls">
+<video src="http://v6.365yg.com/video/m/220277853e77b5342f1b1caa81e372f498a11461270000277e8ed4caee/?Expires=1493273507&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=zc0Y3j3k7k1lnOD64L76eoAGo2k%3D" controls="controls">
 
 </video>
 
