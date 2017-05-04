@@ -4,7 +4,7 @@ title:      "1.3 UWP开发-1 开发准备 Series Wrap Up"
 subtitle:   "UWP"
 date:       2017-04-25 22:00:00
 author:     "FishYan"
-header-img: "img/blog-header.png" 
+header-img: "img/UWP-header.png" 
 catalog:    true
 tags:
     - UWP
