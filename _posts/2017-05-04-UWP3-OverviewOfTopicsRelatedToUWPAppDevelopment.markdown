@@ -11,7 +11,7 @@ tags:
     - Visual Sutdio
 ---
 
-<video src="http://v3.365yg.com/4f0b5826f36e85dfe685140205c1bbbf/590181db/video/m/220c3f2d22740014b72b0eacabc054a1d8411462c8000014ad5688eff1/" width="700px" height="400px" controls="controls">
+<video src="http://v3.365yg.com/d26fcbe03d2d44d7bcf5c2c88b9258c4/590d2565/video/m/22099e1dc75f8f74f0d994e0ad2037aa1b711465f0000036f37d161356/" width="700px" height="400px" controls="controls">
 
 </video>
 
@@ -29,4 +29,4 @@ tags:
 - 10.设计app的时候要遵循一定的设计规范，编码规范
 
 **同步发布**
-[今日头条](http://mp.toutiao.com/preview_article/?pgc_id=6416099725417644546)
+[今日头条](http://www.toutiao.com/i6416099725417644546/)
