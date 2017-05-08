@@ -4,7 +4,7 @@ title:      "2.1 UWP开发 创建第一个UWP应用"
 subtitle:   "UWP"
 date:       2017-04-25 22:00:00
 author:     "FishYan"
-header-img: "img/UWP-header.png" 
+header-img: "img/UWP-header.jpg" 
 catalog:    true
 tags:
     - UWP

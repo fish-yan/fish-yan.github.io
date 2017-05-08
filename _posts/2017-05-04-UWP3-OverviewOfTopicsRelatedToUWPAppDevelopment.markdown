@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      "UWP开发相关内容概述"
+title:      "2.2 UWP开发 UWP开发相关内容概述"
 subtitle:   "UWP"
 date:       2017-05-04 22:00:00
 author:     "FishYan"
-header-img: "img/UWP-header.png" 
+header-img: "img/UWP-header.jpg" 
 catalog:    true
 tags:
     - UWP
