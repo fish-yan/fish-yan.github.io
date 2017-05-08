@@ -16,8 +16,6 @@ tags:
 
 </video>
 
-<video src="http://v6.365yg.com/video/m/2205e083b990e344aecb7a714434eddb03e11469e100003290ca242176/?Expires=1494219460&amp;AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&amp;Signature=ZA8vSditLfoj9%2B%2FHg1y1RbUzk%2Fk%3D" poster="http://p1.pstatp.com/large/1f7f00039170e117a420" controls="" width="640" height="320" preload="true" webkit-playsinline="webkit-playsinline" playsinline="playsinline" id="tt-video" class="tt-video"></video>
-
 ## 学习要点
 
 ### 1.XMAL 的用途和本质
