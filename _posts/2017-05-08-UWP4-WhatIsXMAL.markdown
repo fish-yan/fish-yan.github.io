@@ -2,7 +2,7 @@
 layout:     post
 title:      "3.1 UWP开发 什么是XMAL"
 subtitle:   "UWP"
-date:       2017-05-04 22:00:00
+date:       2017-05-08 22:00:00
 author:     "FishYan"
 header-img: "img/UWP-header.jpg" 
 catalog:    true
