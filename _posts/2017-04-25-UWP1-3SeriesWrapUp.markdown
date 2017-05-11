@@ -29,7 +29,7 @@ tags:
 
 这一系列视频是为初学者准备的，学习本系列课程，你需要具备一定的C#的知识和会使用visual studio （不具备，也没有太大关系，学习完本系列课程你就具备了）
 
-如果你之前是做桌面开发，或者其他的对XMAL，C#，Visual Studio，已经非常熟悉了，我想本课程不适合你，你会觉得讲解的太慢了。给你推荐另一个系列Andy Wigley 和Shen Chauhan的[Windows开发者指南](http://bit.do/developers-guide-to-windows-10)
+如果你之前是做桌面开发，或者其他的对XAML，C#，Visual Studio，已经非常熟悉了，我想本课程不适合你，你会觉得讲解的太慢了。给你推荐另一个系列Andy Wigley 和Shen Chauhan的[Windows开发者指南](http://bit.do/developers-guide-to-windows-10)
 
 **名词解释**
 

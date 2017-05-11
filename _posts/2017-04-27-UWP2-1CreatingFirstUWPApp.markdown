@@ -44,7 +44,7 @@ Visual Studio 有很多种创建新项目的方式，先演示一种，后面还
 - 在代码区域修改button的属性
 - 在右侧Property区域修改button的属性
 
-// MainPage.xmal
+// MainPage.xaml
 
 ```XML
 <Button x:Name="ClickMeButton" Content="Click This" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" FontSize="16" Click="ClickMeButton_Click"/>
@@ -56,7 +56,7 @@ Visual Studio 有很多种创建新项目的方式，先演示一种，后面还
 <TextBlock x:Name="ResultTextBlock" HorizontalAlignment="Left" Margin="68,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="64"/>
 ```
 
-// MainPage.xmal.cs
+// MainPage.XAML.cs
 
 ```C#
 public sealed partial class MainPage : Page

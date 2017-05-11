@@ -9,7 +9,7 @@ catalog:    true
 tags:
     - UWP
     - Visual Sutdio
-    - XMAL
+    - XAML
 ---
 
 <video src="http://v3.365yg.com/70624cb5dc513968f4397a7b4bb4eacf/5912885b/video/m/220a4c168b77db64591abd9a7847d6881e711469060000079b46c4f092/" width="700px" height="400px" controls="controls">
@@ -18,7 +18,7 @@ tags:
 
 ## 学习要点
 
-XMAL中的元素可以内含其他的元素，比如Page内含Grid，Grid内含Button，TextBlock... 这些控件的放置关系就是子父控件关系。
+XAML中的元素可以内含其他的元素，比如Page内含Grid，Grid内含Button，TextBlock... 这些控件的放置关系就是子父控件关系。
 
 ### 1.默认属性
 

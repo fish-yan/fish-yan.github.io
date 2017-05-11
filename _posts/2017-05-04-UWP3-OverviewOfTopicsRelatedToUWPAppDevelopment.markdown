@@ -18,7 +18,7 @@ tags:
 ## 学习要点
 
 - 1.UWP的开发和WPF，ASP.net的开发非常的相似，拥有这两种开发经验的人学起来会十分轻松。
-- 2.我们需要用XMAL来搭建界面，XMAL非常类似与HTML，当然还需要一些后台代码来控制控件，就是C#（本教程使用C#，当然你也可以使用C++，JavaScript...）在这里XAML代码写在MainPage.XAML，C#代码写在MainPage.XAML.cs中，这是一对文件。
+- 2.我们需要用XAML来搭建界面，XAML非常类似与HTML，当然还需要一些后台代码来控制控件，就是C#（本教程使用C#，当然你也可以使用C++，JavaScript...）在这里XAML代码写在MainPage.XAML，C#代码写在MainPage.XAML.cs中，这是一对文件。
 - 3.partial class 表示为某一个类的一部分，只要类名相同，命名空间相同，我们就可以把同一个类存储到不同的文件中。
 - 4.MainPage.XAML和MainPage.XAML.cs关联，在MainPage.XAML.cs中类继承自Page，MainPage.XAML中的根标签也是- Page，并且关联的类为x:Class="HelloWorld.MainPage"这是HelloWorld命名空间中的MainPage类
 - 5.调试功能
