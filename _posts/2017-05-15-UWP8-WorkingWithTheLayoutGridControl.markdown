@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "3.5 UWP开发 网格布局控件"
+title:      "3.5 UWP开发 网格布局控件(Grid)"
 subtitle:   "UWP"
 date:       2017-05-15 22:00:00
 author:     "FishYan"
