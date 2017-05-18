@@ -2,7 +2,7 @@
 layout:     post
 title:      "3.7 UWP开发 复习：XAML和布局控件"
 subtitle:   "UWP"
-date:       2017-05-04 22:00:00
+date:       2017-05-17 22:00:00
 author:     "FishYan"
 header-img: "img/UWP-header.jpg" 
 catalog:    true
