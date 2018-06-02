@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "4. Swift 中的可函数"
+title:      "4. Swift 中的函数"
 subtitle:   "Swift"
 date:       2018-06-02 22:00:00
 author:     "FishYan"
