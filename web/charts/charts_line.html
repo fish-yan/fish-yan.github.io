@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>charts_line</title>
+
+        <style type="text/css">
+            * {
+                padding: 0;
+                margin: 0;
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                user-select: none;
+                -webkit-touch-callout:none;
+                -khtml-user-select:none;
+                -moz-user-select:none;
+                -ms-user-select:none;
+            }
+            .body {
+                width: 100%;
+                height: 217px;
+                margin: 0 auto;
+                text-align:center;
+                margin-top: 10px;
+            }
+            #container {
+                width: 100%;
+                height: 217px;
+                margin: 0 auto;
+            }
+            .icon {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+                padding-right: 10px;
+            }
+
+            .unselected {
+                background: url('img/button-weixuan.png') no-repeat;
+                background-size: 15px auto;
+            }
+
+            .red {
+                background: url(img/button-red.png) no-repeat;
+                background-size: 15px auto;
+            }
+
+            .blue {
+                background: url(img/button-blue.png) no-repeat;
+                background-size: 15px auto;
+            }
+
+            .purple {
+                background: url(img/button-purple.png) no-repeat;
+                background-size: 15px auto;
+            }
+        
+        span {
+            pointer-events: none;
+        }
+
+        </style>
+        <script type="text/javascript" src="jquery.js"></script>
+	</head>
+	<body>
+        <script src="highcharts.js"></script>
+        <div class="body">
+            <div id="container"></div>
+        </div>
+        
+        <script type="text/javascript">
+                
+        var options = {
+            chart: {
+                type: 'area',
+                marginTop:40
+            },
+            credits:{
+                enabled: false // 禁用版权信息
+            },
+
+            title: {
+                text: null,
+                align: 'left',
+                y: 15,
+                style: {
+                    fontSize:13,
+                    color: '#585858',
+                    fontWeight: 'bold',
+                }
+            },
+            xAxis: [{
+                tickWidth: 0,
+                tickInterval: null,
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    day: '%m-%d',
+                    week: '%d',
+                    month: '%m月',
+                },
+                labels: {
+                    style: {
+                        fontSize: 10,
+                    },
+                },
+                
+            }],
+            yAxis:[
+                {
+                    title:{
+                        text:"(元)",
+                        offset:13,
+                        align:'high',
+                        rotation:0,
+                        y:-10,
+                        style:{
+                            fontSize:10,
+                        },
+                    },
+                    gridLineDashStyle:'Dash',
+                }
+            ],
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom',
+                itemStyle: {
+                    color: '#656565',
+                    fontWeight: 'normal',
+                    fontSize: 12
+                },
+            },
+
+            tooltip: {
+                shared: true,
+                borderRadius: 8,
+                shadow: false,
+                borderColor: 'clear',
+                backgroundColor: 'rgba(0,0,0,0.6)',
+                style: {
+                    color: 'white',
+                    fontSize: 5,
+                },
+                useHTML: true,
+                formatter: function () {
+                    var s = '<table width=130>';
+                    $.each(this.points, function (index, point) {
+                        var year =  Highcharts.dateFormat('%y',point.x)
+                        var month = Highcharts.dateFormat('%m',point.x)
+                        var day = Highcharts.dateFormat('%d',point.x)
+                        if (index == 0) { // 上月
+                            if (month > 1) {
+                                month -= 1 
+                            } else {
+                                month = 12
+                                year -= 1
+                            }
+                        }
+                        month = (Array(2).join(0) + month).slice(-2);
+                        var yTitle = options.yAxis[0].title.text.replace("(", "").replace(")", "")
+                        s += '<tr><td width=5><span style="color:' +point.color + '">\u25CF</span></td><td width=60>' + year + "/" + month + "/" + day + '</td><td>' +  point.series.name + '</td><td style="text-align: center" minwidth=25%>' + point.y + yTitle + '</td></tr>';
+                        });
+                        s += '</table>'
+                        return s;
+                }
+            },
+
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    lineWidth: 1,
+                    point: {
+                        events: {
+                            // 数据点点击事件
+                            // 其中 e 变量为事件对象，this 为当前数据点对象
+                            click: function (e) {
+                                setTimeout(function() {
+                                       this.blur()
+                                }, 1000)
+                            }
+                        }
+                    },
+                    events: {
+                        legendItemClick: function(e) {
+                            var index = this.index;
+                            var series = this.chart.series;
+                            var s = series[index]
+                            if (index >= series.length / 2) {
+                                var tempIndex = index - series.length / 2
+                                var temps = series[tempIndex]
+                                if (temps.visible) {
+                                    var count = 0
+                                    for (var i = 0; i < series.length/2; i++) {
+                                        if (series[i].visible) {
+                                            count++
+                                        }
+                                    }
+                                    console.log(count)
+                                    if (count <= 1) {
+                                        return false
+                                    }
+                                }
+                                temps.visible ? temps.hide() : temps.show()
+                                temps.visible ? s.show() : s.hide()
+                            }                            
+                            return false;
+                        }
+                    },
+                }
+            },
+
+            series: [],
+        }
+
+        function hexToRgb(hex) {
+            var rgb = [];
+        
+            hex = hex.substr(1);//去除前缀 # 号
+        
+            if (hex.length === 3) { // 处理 "#abc" 成 "#aabbcc"
+                hex = hex.replace(/(.)/g, '$1$1');
+            }
+        
+            hex.replace(/../g, function(color){
+                rgb.push(parseInt(color, 0x10));//按16进制将字符串转换为数字
+            });
+        
+            return "rgba(" + rgb.join(",") + ",0.3)";
+        };
+        
+        function setData(beginDate, title, items) {
+            var colors = ['#00BAFF', '#FFC101', '#FF8196']
+            yTitle = title
+            options.yAxis[0].title.text = "(" + title + ")"
+            options.series = []
+            Highcharts.each(items, function(item,index) {
+                var data = item.data
+                if (data.length == 0) {
+                    data = [0]
+                }
+                var series = {
+                    type: 'area',
+                    showInLegend: false,
+                    name: item.name,
+                    data: data,
+                    color: colors[index],
+                    fillOpacity: 0.1,
+                    fillColor: {
+                        linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, hexToRgb(colors[index])],
+                                [1, 'rgba(255,255,255,0)']
+                            ]
+                    },
+                    marker: {
+                        symbol: 'circle',
+                        radius: 3,
+                    }
+                };
+                options.series.push(series);
+            });
+            Highcharts.each(items, function(item,index) {
+                var series1 = {
+                    type: 'line',
+                    name: item.name,
+                    color: colors[index],
+                    marker: {
+                        symbol: 'circle',
+                        radius: 3,
+                    }
+                };
+                options.series.push(series1);
+            });
+            options.legend.enabled = true
+            var dateArray = beginDate.split('-')
+            options.xAxis.dateTimeLabelFormats = {
+                day: '%d',
+                week: '%d',
+                month: '%m月',
+            }
+            options.xAxis.tickInterval = 24 * 3600 * 1000
+            options.plotOptions.series.pointIntervalUnit = 'day'
+            options.plotOptions.series.pointStart = Date.UTC(dateArray[0], dateArray[1] - 1, dateArray[2]);
+            var charts = new Highcharts.chart('container', options);
+        }
+        
+        
+        // json 数据按一下格式传入
+        var json = [
+                    {
+                    name: "上月",
+                    data: [0],
+                    },{
+                    name: "当月",
+                    data: [0],
+                    }
+                    ]
+        window.onload = setData("2018-01-01", "元", json)
+        // 如果是想禁用长按弹出菜单, 用js
+        window.addEventListener('contextmenu', function(e){
+                                e.preventDefault();
+                                });
+        window.ontouchstart = function(e) { e.preventDefault(); };
+
+        </script>
+	</body>
+</html>

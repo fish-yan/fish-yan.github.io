@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Charts</title>
+
+        <style type="text/css">
+            * {
+                padding: 0;
+                margin: 0;
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                user-select: none;
+            }
+            .body {
+                min-width: 310px;
+                max-width: 800px;
+                height: 250px;
+                margin: 0 auto;
+                text-align:center;
+            }
+            #container {
+                min-width: 310px;
+                max-width: 800px;
+                height: 230px;
+                margin: 0 auto;
+            }
+            .icon {
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+                padding-right: 10px;
+            }
+
+            .unselected {
+                background: url('img/button-weixuan.png') no-repeat;
+                background-size: 15px auto;
+            }
+
+            .red {
+                background: url(img/button-red.png) no-repeat;
+                background-size: 15px auto;
+            }
+
+            .blue {
+                background: url(img/button-blue.png) no-repeat;
+                background-size: 15px auto;
+            }
+
+            .purple {
+                background: url(img/button-purple.png) no-repeat;
+                background-size: 15px auto;
+            }
+
+        </style>
+        <script type="text/javascript" src="jquery.js"></script>
+	</head>
+	<body>
+        <script src="highcharts.js"></script>
+        <div class="body">
+            <div id="container"></div>
+        </div>
+        
+        <script type="text/javascript">
+
+        var options = {
+            chart: {
+                type: 'area',
+                marginTop: 50,
+            },
+            credits:{
+                enabled: false // 禁用版权信息
+            },
+
+            title: {
+                text: null,
+                align: 'left',
+                y: 15,
+                style: {
+                    fontSize:13,
+                    color: '#585858',
+                    fontWeight: 'bold',
+                }
+            },
+            xAxis: {
+                tickWidth: 0,
+                tickInterval: null,
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    day: '%m-%d',
+                    week: '%d',
+                    month: '%m月',
+                },
+                labels: {
+                    style: {
+                        fontSize: 10,
+                    },
+                },
+                
+            },
+
+            yAxis: {
+                title: {
+                    text: ''
+                },
+                gridLineDashStyle:'Dash',
+            },
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom',
+                y:10,
+                itemStyle: {
+                    color: '#656565',
+                    fontWeight: 'normal',
+                    fontSize: 12
+                },
+            },
+
+            tooltip: {
+                shared: true,
+                borderRadius: 8,
+                shadow: false,
+                borderColor: 'clear',
+                backgroundColor: 'rgba(0,0,0,0.6)',
+                style: {
+                    color: 'white',
+                    fontSize: 5,
+                },
+                useHTML: true,
+                formatter: function () {
+                    var s = '<table width=130>';
+                    $.each(this.points, function () {
+                       var xName = Highcharts.dateFormat('%y/%m/%d',this.x)
+                       if (this.series.data.length == 12) {
+                           var xName = Highcharts.dateFormat('%y/%m',this.x)
+                       }
+                       s += '<tr><td width=5><span style="color:' +this.color + '">\u25CF</span></td><td width=60>' + xName + '</td><td>' + this.series.name + '</td><td style="text-align: center" minwidth=25%>' + this.y + '</td></tr>';
+                       });
+                       s += '</table>'
+                       return s;
+                }
+            },
+
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    lineWidth: 1,
+                    point: {
+                        events: {
+                            // 数据点点击事件
+                            // 其中 e 变量为事件对象，this 为当前数据点对象
+                            click: function (e) {
+                                setTimeout(function() {
+                                       this.blur()
+                                }, 1000)
+                            }
+                        }
+                    },
+                    events: {
+                        legendItemClick: function(e) {
+                            return false;
+                        }
+                    },
+                }
+            },
+
+            series: [],
+        }
+
+        // json 数据按一下格式传入
+        var json = [
+            {
+                name: "无数据",
+                data: [0],
+            }
+        ]
+
+        function hexToRgb(hex) {
+            var rgb = [];
+        
+            hex = hex.substr(1);//去除前缀 # 号
+        
+            if (hex.length === 3) { // 处理 "#abc" 成 "#aabbcc"
+                hex = hex.replace(/(.)/g, '$1$1');
+            }
+        
+            hex.replace(/../g, function(color){
+                rgb.push(parseInt(color, 0x10));//按16进制将字符串转换为数字
+            });
+        
+            return "rgba(" + rgb.join(",") + ",0.3)";
+        };
+        
+        function setData(beginDate, title, items) {
+            $('#container').css({'height':'230'})
+            var colors = ['#00BAFF', '#FF8196', '#FFC101']
+            options.title.text = title
+            options.series = []
+            Highcharts.each(items, function(item,index) {
+                var data = item.data
+                if (data.length == 0) {
+                    data = [0]
+                }
+                var series = {
+                    name: item.name,
+                    data: data,
+                    color: colors[index],
+                    fillOpacity: 0.1,
+                    fillColor: {
+                        linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, hexToRgb(colors[index])],
+                                [1, 'rgba(255,255,255,0)']
+                            ]
+                    },
+                    marker: {
+                        symbol: 'circle',
+                        radius: 3,
+                    }
+                };
+                options.series.push(series);
+            });
+            options.legend.enabled = true
+            var dateArray = beginDate.split('-')
+            if (dateArray.length == 3) {
+                var length = items[0].data.length
+                if (length <= 7) {
+                    options.xAxis.dateTimeLabelFormats = {
+                        day: '%m-%d',
+                        week: '%d',
+                        month: '%m月',
+                    }
+                } else {
+                    options.xAxis.dateTimeLabelFormats = {
+                        day: '%d',
+                        week: '%d',
+                        month: '%m月',
+                    }
+                }
+                if (length <= 15) {
+                    options.xAxis.tickInterval = 24 * 3600 * 1000
+                } else if (length <= 20) {
+                    options.xAxis.tickInterval = 2 * 24 * 3600 * 1000
+                } else {
+                    options.xAxis.tickInterval = 7 * 24 * 3600 * 1000
+                }
+                options.plotOptions.series.pointIntervalUnit = 'day'
+                options.plotOptions.series.pointStart = Date.UTC(dateArray[0], dateArray[1] - 1, dateArray[2]);
+            } else if (dateArray.length == 2) {
+                options.xAxis.tickInterval = 2 * 30 * 24 * 3600 * 1000
+                options.plotOptions.series.pointStart = Date.UTC(dateArray[0], dateArray[1] - 1, 1);
+                options.plotOptions.series.pointIntervalUnit = 'month'
+            }            
+            var charts = new Highcharts.chart('container', options);
+        }
+        window.onload = setData("2018-01-01", "无数据", json)
+
+        </script>
+	</body>
+</html>
