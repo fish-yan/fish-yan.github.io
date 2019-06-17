@@ -238,7 +238,7 @@ Signature4：同Signature2。
             // 58-74：根据实际填写，
             // ①若法人代表、实际受益人、实际控制人、授权办理人均为法人自身，则只需填写法人代表一栏；
             // ②若不一致则需分别填写（法人代表/授权办理人为法人，实际受益人/实际控制人为结算人）。
-            if (params["corporate_idcord"] == params["icrp_id_no"]) {
+            if (params["corporate_idcord"] == params["icrp_id_no"] || params["icrp_id_no"] == "" || params["icrp_id_no"] == null ) {
                 $("#tab_crp_nm").html(params["crp_nm"])
                 $("#tab_crp_card_id").html(params["corporate_idcord"])
                 $("#tab_crp_card_date").html(params["corporate_idlimited"])
