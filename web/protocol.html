@@ -201,13 +201,13 @@ Signature4：同Signature2。
             $("#tab_is_others").prop({"checked":params["sdk_num"] > "0" || params["trm_num"] > "0" || params["plu_num"] > "0"})
             var des = ""
             if (params["sdk_num"] > "0") {
-                des = "扫码设备"
+                des = "扫码设备；"
             }
             if (params["trm_num"] > "0") {
-                des = des + "；台牌"
+                des = des + "台牌；"
             }
             if (params["plu_num"] > "0") {
-                des = des + "；收银插件"
+                des = des + "收银插件；"
             }
             $("#tab_others_des").html(des)
             // 42：进件的操作员姓名。
