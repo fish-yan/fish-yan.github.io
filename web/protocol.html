@@ -100,7 +100,13 @@ Signature4：同Signature2。
     </style>
     <script>
         /// should change the model to JSON
-        function setData(params) {
+        function setData(items) {
+            var params = items
+            var u = navigator.userAgent
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            if (isAndroid) {
+                params = JSON.parse(items)
+            }
             var isBusiness = params["bus_lic_no"] != ""
             var isXiaowei = !isBusiness && params["door_img"] != "" && params["choc_img"] != ""
             var isQuick = !isBusiness && !isXiaowei
