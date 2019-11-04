@@ -114,12 +114,14 @@ Signature4：同Signature2。
             var isBusiness = params["incom_type"] == "2" || params["incom_type"] == "4"
             var isXiaowei = params["incom_type"] == "1"
             var isQuick = params["incom_type"] == "3"
+            var hasFace = params["qt_num"] > "0"
             var hasPOS = params["terminl_num"] > "0"
             var hasOldPOS = params["trm_pos"] > "0"
             var hasSaoma = params["sdk_num"] > "0"
             var hasTaipai = params["trm_num"] > "0"
             var hasChajian = params["plu_num"] > "0"
             // 1：小微/快速进件填商户层姓名法人，企业进件填商户注册名称。
+            if (!params["merc_cnm"]) {params["merc_cnm"] = params["bse_lice_nm"]}
             $("#nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"]);
             // 2：商户地址（商户层）
             $("#merc_add").html(params["merc_ad"] + params["merc_adds"])
@@ -135,7 +137,7 @@ Signature4：同Signature2。
                 $("#tr7").prop({"checked":true})
                 $("#tr8").prop({"checked":true})
                 $("#tr9").prop({"checked":true})
-            } else if (hasSaoma) {
+            } else if (hasSaoma || hasFace) {
                 $("#tr1").prop({"checked":true})
                 $("#tr2").prop({"checked":true})
                 $("#tr3").prop({"checked":false})
@@ -157,7 +159,7 @@ Signature4：同Signature2。
                 $("#tr9").prop({"checked":false})
             }
             // 16-19：开通了银行卡产品则勾选。
-            if (hasPOS || hasOldPOS || hasSaoma) {
+            if (hasFace || hasPOS || hasOldPOS || hasSaoma) {
                 $("#card1").prop({"checked":true})
                 $("#card2").prop({"checked":true})
                 $("#card3").prop({"checked":true})
@@ -189,8 +191,8 @@ Signature4：同Signature2。
                 $("#settle_type").html("D+1")
             }
             // 26-30：根据实际值填写，27项若不封顶则填“-”。
-            $("#jjkfl_selected").prop({"checked":hasPOS || hasOldPOS || hasSaoma})
-            $("#djkfl_selected").prop({"checked":hasPOS || hasOldPOS || hasSaoma})
+            $("#jjkfl_selected").prop({"checked":hasFace || hasPOS || hasOldPOS || hasSaoma})
+            $("#djkfl_selected").prop({"checked":hasFace || hasPOS || hasOldPOS || hasSaoma})
             $("#jjkfl").html(params["fee_rat"])
             $("#jjkfd").html(params["max_fee_amt"])
             if (params["max_fee_amt"] == "0") {
@@ -232,19 +234,22 @@ Signature4：同Signature2。
             $("#crp_nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"])
             // 36-39：根据实际情况勾选，勾选38时，39项的填写规则为：“扫码王；台牌；插件；”分号隔开。
             $("#tab_is_old_pos").prop({"checked":hasOldPOS})
-            // $("#tab_is_pos").prop({"checked":hasPOS})
+            $("#tab_is_pos").prop({"checked":hasPOS})
             $("#tab_is_others").prop({"checked":hasSaoma || hasTaipai || hasChajian})
-            var des = ""
+            var des = new Array
+            if (hasFace) {
+                des.push("刷脸设备")
+            }
             if (hasSaoma) {
-                des = "扫码设备；"
+                des.push("扫码设备")
             }
             if (hasTaipai) {
-                des = des + "台牌；"
+                des.push("台牌")
             }
             if (hasChajian) {
-                des = des + "收银插件；"
+                des.push("收银插件")
             }
-            $("#tab_others_des").html(des)
+            $("#tab_others_des").html(des.join("；"))
             // 42：进件的操作员姓名。
             $("#tab_oper_nm").html(params["oper_nm"])
             // 43：mcc
@@ -281,6 +286,12 @@ Signature4：同Signature2。
             }
             if (!params["corporate_idlimited"]) {
                 params["corporate_idlimited"] = params["crp_exp_dt"]
+            }
+            if (!params["icrp_id_no"]) {
+                params["icrp_id_no"] = params["stl_crp_no"]
+            }
+            if (!params["crp_exp_dt_tmp"]) {
+                params["crp_exp_dt_tmp"] = params["crp_end_dt"]
             }
             if (params["corporate_idcord"] == params["icrp_id_no"] || params["icrp_id_no"] == "" || params["icrp_id_no"] == null ) {
                 $("#tab_crp_nm").html(params["crp_nm"])
@@ -401,7 +412,7 @@ Signature4：同Signature2。
         <p>4.对发生的交易差错或需调整的账务，自甲方提出并经查实后，及时为甲方办理账务调整。对发卡行退单，应及时通知甲方，必要时协助甲方进行相关款项追索。</p>
         <p>5.在甲方入网手续审批通过后的15个工作日内，完成对甲方的银行卡受理业务培训和受理终端安装（如有），投放在甲方的受理终端应经检测通过，并安装统一的受理程序。</p>
         <p>6.乙方作为甲方的收单机构承担相应的收单责任，享有相应的收单权利。配合中国银联及各成员机构进行交易纠纷的调查取证及业务投诉。</p>
-        <p>7.出现以下情形，乙方有权采取暂缓甲方全部或部分交易资金结算、中止甲方银行卡业务受理等措施。<b>收回受理终端（关闭网络支付接口（如有））等措施.</b>>  如甲方受理时明知属于欺诈交易仍然受理或协助完成交易的，乙方可冻结持有或扣划甲方款项，直至乙方认为甲方的欺诈交易对除甲方外的任何单位或个人无造成损失的可能。</p>
+        <p>7.出现以下情形，乙方有权采取暂缓甲方全部或部分交易资金结算、中止甲方银行卡业务受理等措施。<b>收回受理终端（关闭网络支付接口（如有））等措施.</b>  如甲方受理时明知属于欺诈交易仍然受理或协助完成交易的，乙方可冻结持有或扣划甲方款项，直至乙方认为甲方的欺诈交易对除甲方外的任何单位或个人无造成损失的可能。</p>
         <p>（1）当乙方接收到银联或发卡行或基于本身风控需求提出调单请求时，甲方拒绝配合或未按期限提供有效凭证；</p>
         <p>（2）乙方有合理依据认定交易存在可疑之处，或有合理依据怀疑甲方违反本协议，有违规交易或欺诈交易行为。</p>
         <p>8.如发生退单，乙方有权根据调账差错交易记录直接从甲方的往来款项和结算账户中扣款，但乙方必须通知甲方，并在甲方按规定及时提供所需相关证明材料（不限于签购单等）后，按照差错处理业务流程相关规定向发卡行索款，后续不再发生二次退单应及时返回甲方正常款项。</p>
@@ -483,7 +494,7 @@ Signature4：同Signature2。
         <p> <input type="checkbox" disabled id="djkfl_selected"></input> 银联境内贷记卡：费率为每笔交易金额的<!--28--><u id="djkfl">_____</u>%； </p>
         <p> <input type="checkbox" disabled></input> 银联境外卡：每笔交易金额的<u>_____</u>%，<u>_____</u>元封顶。</p>
         <p> <input type="checkbox" disabled checked=true></input> 支付宝<!--29--><u id="alifl">_____</u>%，<input type="checkbox" disabled checked=true></input>微信支付<!--30--><u id="wxfl">_____</u>%，<input type="checkbox" disabled></input>其他<u>_____</u>%。</p>
-        <p>（2）乙方将自有产权终端<!--109-->><u id="trm_type"></u>，提供给甲方使用，甲方按照人民币<!--110-->><u id="trm_service_charge"></u>元/台向乙方支付端服务费（服务费包括但不限于：提供终端使用、终端维护、终端使用培训等）。单台终端从激活的次日开始<!--112-->><u id="trm_month"></u>个月内，若非封顶类交易额达到<!--111-->><u id="trm_capping"></u>万元，则该终端已支付的前述终端服务费作为奖励返还甲方;该终端非封顶类交易额未达到前述标准，则甲方无奖励。单台终端非封顶类交易额提前达到前述标准，则在达到前述标准后的10个工作日内返还给甲方</p>
+        <p>（2）乙方将自有产权终端<!--109--><u id="trm_type"></u>，提供给甲方使用，甲方按照人民币<!--110--><u id="trm_service_charge"></u>元/台向乙方支付端服务费（服务费包括但不限于：提供终端使用、终端维护、终端使用培训等）。单台终端从激活的次日开始<!--112--><u id="trm_month"></u>个月内，若非封顶类交易额达到<!--111--><u id="trm_capping"></u>万元，则该终端已支付的前述终端服务费作为奖励返还甲方;该终端非封顶类交易额未达到前述标准，则甲方无奖励。单台终端非封顶类交易额提前达到前述标准，则在达到前述标准后的10个工作日内返还给甲方</p>
         <p>（3）其他业务服务：乙方根据国家监管法规和自身产品服务种类，不断完善对甲方的服务，但必须以本协议约定的方式提前告知甲方，明示收费标准；甲方可选择是否使用该项服务。</p>
         <p>（4）本条款各项服务的费率标准仅适用于本协议项下终端。</p>
         <p><b>6.乙方额外为甲方提供T+0（当日到账）提前到账服务，但入网未满90日或连续交易未超过30日，不能申请开通T+0服务。乙方有权收取相应的提前到账附加手续费（收费标准见星驿付业务受理申请表）。甲方有权通过乙方微信公众号取消或变更提前到账服务，乙方需在T+3个工作日内完成受理工作,乙方将停止收取相应的附加手续费。</b></p>

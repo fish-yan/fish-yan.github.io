@@ -110,20 +110,23 @@ Signature4：同Signature2。
             var isBusiness = params["incom_type"] == "2" || params["incom_type"] == "4"
             var isXiaowei = params["incom_type"] == "1"
             var isQuick = params["incom_type"] == "3"
-            var isPOS = params["terminl_num"] != "0"
-            var isSaoma = !isPOS && params["sdk_num"] > "0"
-            var isTaipai = !isPOS && !isSaoma && params["trm_num"] > "0"
-            var isChajian = !isPOS && !isSaoma && !isTaipai && params["plu_num"] > "0"
+            var hasFace = params["qt_num"] > "0"
+            var hasPOS = params["terminl_num"] > "0"
+            var hasOldPOS = params["trm_pos"] > "0"
+            var hasSaoma = params["sdk_num"] > "0"
+            var hasTaipai = params["trm_num"] > "0"
+            var hasChajian = params["plu_num"] > "0"
             // 1：小微/快速进件填商户层姓名法人，企业进件填商户注册名称。
+            if (!params["merc_cnm"]) {params["merc_cnm"] = params["bse_lice_nm"]}
             $("#nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"]);
             // 2：商户地址（商户层）
             $("#merc_add").html(params["merc_ad"] + params["merc_adds"])
             // 5：终端设备台数仅取值有智能pos的，其他不计算，纯扫码纯台牌算0。
-            if (isPOS) {
+            if (hasPOS) {
                 $("#pos_num").html(params["terminl_num"])
             }
             // 7-15：POS进件全部勾选，扫码设备（扫码王、电子台牌）进件除9-12外都勾选，台牌和插件进件都不勾选。
-            if (isPOS) {
+            if (hasPOS || hasOldPOS) {
                 $("#tr1").prop({"checked":true})
                 $("#tr2").prop({"checked":true})
                 $("#tr3").prop({"checked":true})
@@ -133,7 +136,7 @@ Signature4：同Signature2。
                 $("#tr7").prop({"checked":true})
                 $("#tr8").prop({"checked":true})
                 $("#tr9").prop({"checked":true})
-            } else if (isSaoma) {
+            } else if (hasSaoma || hasFace) {
                 $("#tr1").prop({"checked":true})
                 $("#tr2").prop({"checked":true})
                 $("#tr3").prop({"checked":false})
@@ -143,7 +146,7 @@ Signature4：同Signature2。
                 $("#tr7").prop({"checked":true})
                 $("#tr8").prop({"checked":true})
                 $("#tr9").prop({"checked":true})
-            } else if (isTaipai || isChajian) {
+            } else if (hasTaipai || hasChajian) {
                 $("#tr1").prop({"checked":false})
                 $("#tr2").prop({"checked":false})
                 $("#tr3").prop({"checked":false})
@@ -155,7 +158,7 @@ Signature4：同Signature2。
                 $("#tr9").prop({"checked":false})
             }
             // 16-19：开通了银行卡产品则勾选。
-            if (isPOS || isSaoma) {
+            if (hasFace || hasPOS || hasOldPOS || hasSaoma) {
                 $("#card1").prop({"checked":true})
                 $("#card2").prop({"checked":true})
                 $("#card3").prop({"checked":true})
@@ -187,8 +190,8 @@ Signature4：同Signature2。
                 $("#settle_type").html("D+1")
             }
             // 26-30：根据实际值填写，27项若不封顶则填“-”。
-            $("#jjkfl_selected").prop({"checked":isPOS || isSaoma})
-            $("#djkfl_selected").prop({"checked":isPOS || isSaoma})
+            $("#jjkfl_selected").prop({"checked":hasFace || hasPOS || hasOldPOS || hasSaoma})
+            $("#djkfl_selected").prop({"checked":hasFace || hasPOS || hasOldPOS || hasSaoma})
             $("#jjkfl").html(params["fee_rat"])
             $("#jjkfd").html(params["max_fee_amt"])
             if (params["max_fee_amt"] == "0") {
@@ -205,19 +208,23 @@ Signature4：同Signature2。
             // Signature1：个人是个人签名，企业是公司章。
             $("#crp_nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"])
             // 36-39：根据实际情况勾选，勾选38时，39项的填写规则为：“扫码王；台牌；插件；”分号隔开。
-            $("#tab_is_pos").prop({"checked":params["terminl_num"] > "0"})
-            $("#tab_is_others").prop({"checked":params["sdk_num"] > "0" || params["trm_num"] > "0" || params["plu_num"] > "0"})
-            var des = ""
-            if (params["sdk_num"] > "0") {
-                des = "扫码设备；"
+            $("#tab_is_old_pos").prop({"checked":hasOldPOS})
+            $("#tab_is_pos").prop({"checked":hasPOS})
+            $("#tab_is_others").prop({"checked":hasFace || hasSaoma || hasTaipai || hasChajian})
+            var des = new Array
+            if (hasFace) {
+                des.push("刷脸设备")
             }
-            if (params["trm_num"] > "0") {
-                des = des + "台牌；"
+            if (hasSaoma) {
+                des.push("扫码设备")
             }
-            if (params["plu_num"] > "0") {
-                des = des + "收银插件；"
+            if (hasTaipai) {
+                des.push("台牌")
             }
-            $("#tab_others_des").html(des)
+            if (hasChajian) {
+                des.push("收银插件")
+            }
+            $("#tab_others_des").html(des.join("；"))
             // 42：进件的操作员姓名。
             $("#tab_oper_nm").html(params["oper_nm"])
             // 43：mcc名称
@@ -255,6 +262,12 @@ Signature4：同Signature2。
             if (!params["corporate_idlimited"]) {
                 params["corporate_idlimited"] = params["crp_exp_dt"]
             }
+            if (!params["icrp_id_no"]) {
+                params["icrp_id_no"] = params["stl_crp_no"]
+            }
+            if (!params["crp_exp_dt_tmp"]) {
+                params["crp_exp_dt_tmp"] = params["crp_end_dt"]
+            }
             if (params["corporate_idcord"] == params["icrp_id_no"] || params["icrp_id_no"] == "" || params["icrp_id_no"] == null ) {
                 $("#tab_crp_nm").html(params["crp_nm"])
                 $("#tab_crp_card_id").html(params["corporate_idcord"])
@@ -285,8 +298,8 @@ Signature4：同Signature2。
             $("#tab_settle_bank_no").html(params["wc_lbnk_no"])
             $("#tab_settle_bank_nm1").html(params["wc_lbnk_nm"])
             // 82-85：根据实际填写，只填写智能POS的数量，扫码王（扫码设备）和台牌、插件等情况不计数，如没有POS则不填。智能终端服务费填为30元/台。
-            $("#tab_pos_num_selected").prop({"checked":isPOS})
-            if (isPOS) {
+            $("#tab_pos_num_selected").prop({"checked":hasPOS})
+            if (hasPOS) {
                 $("#tab_pos_num").html(params["terminl_num"])
                 $("#tab_pos_total_num").html(params["terminl_num"])
             }
@@ -490,7 +503,7 @@ Signature4：同Signature2。
                 </tr>
             </table>
             <table class="normal_table">
-                <td colspan="4"><b>*商户申请机具：<!--36--><input type="checkbox" disabled></input>传统pos <!--37--><input type="checkbox" disabled checked=true id="tab_is_pos"></input>智能pos <!--38--><input type="checkbox" disabled checked=true id="tab_is_others"></input>其他<!--39--><u id="tab_others_des">&nbsp;&nbsp;&nbsp;&nbsp;</u></b></td>
+                <td colspan="4"><b>*商户申请机具：<!--36--><input type="checkbox" disabled id="tab_is_old_pos"></input>传统pos <!--37--><input type="checkbox" disabled checked=true id="tab_is_pos"></input>智能pos <!--38--><input type="checkbox" disabled checked=true id="tab_is_others"></input>其他<!--39--><u id="tab_others_des">&nbsp;&nbsp;&nbsp;&nbsp;</u></b></td>
                 <td colspan="1">*参加培训：<!--40--><input type="checkbox" disabled checked=true></input>是 <!--41--><input type="checkbox" disabled></input>否</td>
             </table>
             <table class="border_table">
