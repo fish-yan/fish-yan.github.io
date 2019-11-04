@@ -107,9 +107,9 @@ Signature4：同Signature2。
             if (isAndroid) {
                 params = JSON.parse(items)
             }
-            var isBusiness = params["bus_lic_no"] != ""
-            var isXiaowei = !isBusiness && params["door_img"] != "" && params["choc_img"] != ""
-            var isQuick = !isBusiness && !isXiaowei
+            var isBusiness = params["incom_type"] == "2" || params["incom_type"] == "4"
+            var isXiaowei = params["incom_type"] == "1"
+            var isQuick = params["incom_type"] == "3"
             var isPOS = params["terminl_num"] != "0"
             var isSaoma = !isPOS && params["sdk_num"] > "0"
             var isTaipai = !isPOS && !isSaoma && params["trm_num"] > "0"
@@ -119,7 +119,9 @@ Signature4：同Signature2。
             // 2：商户地址（商户层）
             $("#merc_add").html(params["merc_ad"] + params["merc_adds"])
             // 5：终端设备台数仅取值有智能pos的，其他不计算，纯扫码纯台牌算0。
-            $("#pos_num").html(params["terminl_num"])
+            if (isPOS) {
+                $("#pos_num").html(params["terminl_num"])
+            }
             // 7-15：POS进件全部勾选，扫码设备（扫码王、电子台牌）进件除9-12外都勾选，台牌和插件进件都不勾选。
             if (isPOS) {
                 $("#tr1").prop({"checked":true})
@@ -203,7 +205,7 @@ Signature4：同Signature2。
             // Signature1：个人是个人签名，企业是公司章。
             $("#crp_nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"])
             // 36-39：根据实际情况勾选，勾选38时，39项的填写规则为：“扫码王；台牌；插件；”分号隔开。
-            $("#tab_is_pos").prop({"checked":params["terminl_num"] >= "0"})
+            $("#tab_is_pos").prop({"checked":params["terminl_num"] > "0"})
             $("#tab_is_others").prop({"checked":params["sdk_num"] > "0" || params["trm_num"] > "0" || params["plu_num"] > "0"})
             var des = ""
             if (params["sdk_num"] > "0") {
@@ -239,11 +241,20 @@ Signature4：同Signature2。
             // 56:营业执照号码 57：营业执照到期日，注意小微和快速进件不填。
             if (isBusiness) {
                 $("#tab_bus_id").html(params["bus_lic_no"])
+                if (!params["bse_lice_limited"]) {
+                    params["bse_lice_limited"] = params["bus_exp_dt"]
+                }
                 $("#tab_bus_date").html(params["bse_lice_limited"])
             }
             // 58-74：根据实际填写，
             // ①若法人代表、实际受益人、实际控制人、授权办理人均为法人自身，则只需填写法人代表一栏；
             // ②若不一致则需分别填写（法人代表/授权办理人为法人，实际受益人/实际控制人为结算人）。
+            if (!params["corporate_idcord"]) {
+                params["corporate_idcord"] = params["crp_id_no"]
+            }
+            if (!params["corporate_idlimited"]) {
+                params["corporate_idlimited"] = params["crp_exp_dt"]
+            }
             if (params["corporate_idcord"] == params["icrp_id_no"] || params["icrp_id_no"] == "" || params["icrp_id_no"] == null ) {
                 $("#tab_crp_nm").html(params["crp_nm"])
                 $("#tab_crp_card_id").html(params["corporate_idcord"])
@@ -275,8 +286,10 @@ Signature4：同Signature2。
             $("#tab_settle_bank_nm1").html(params["wc_lbnk_nm"])
             // 82-85：根据实际填写，只填写智能POS的数量，扫码王（扫码设备）和台牌、插件等情况不计数，如没有POS则不填。智能终端服务费填为30元/台。
             $("#tab_pos_num_selected").prop({"checked":isPOS})
-            $("#tab_pos_num").html(params["terminl_num"])
-            $("#tab_pos_total_num").html(params["terminl_num"])
+            if (isPOS) {
+                $("#tab_pos_num").html(params["terminl_num"])
+                $("#tab_pos_total_num").html(params["terminl_num"])
+            }
             // 86-95：根据实际填写，93填D1的服务费。
             $("#tab_settle_t1").prop({"checked":params["stl_typ"] == "1"}) // T+1
             $("#tab_settle_d1").prop({"checked":params["stl_typ"] == "2"}) // D+1
