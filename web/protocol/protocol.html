@@ -118,11 +118,13 @@ content="telephone=no,date=no,address=no,email=no,url=no"/>
             var hasSaoma = params["sdk_num"] > "0"
             var hasTaipai = params["trm_num"] > "0"
             var hasChajian = params["plu_num"] > "0"
+            var merc_ad = params["prov_nm"] + params["city_nm"] + params["area_nm"]
+            var store_ad = params["prov_nm_stoe"] + params["city_nm_stoe"] + params["area_nm_stoe"]
             // 1：小微/快速进件填商户层姓名法人，企业进件填商户注册名称。
             if (!params["merc_cnm"]) {params["merc_cnm"] = params["bse_lice_nm"]}
             $("#nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"]);
             // 2：商户地址（商户层）
-            $("#merc_add").html(params["merc_ad"] + params["merc_adds"])
+            $("#merc_add").html(merc_ad + params["merc_adds"])
             // 5：终端设备台数仅取值有智能pos的，其他不计算，纯扫码纯台牌算0。
             if (hasPOS) {
                 $("#pos_num").html(params["terminl_num"])
@@ -203,10 +205,12 @@ content="telephone=no,date=no,address=no,email=no,url=no"/>
             $("#alifl").html(params["fee_rat3"])
             $("#wxfl").html(params["fee_rat_scan"])
             // 33：取商户地址。
-            $("#merc_add1").html(params["merc_ad"] + params["merc_adds"])
+            $("#merc_add1").html(merc_ad + params["merc_adds"])
             // 34-35：填写签署电子协议的日期。
-            $("#date1").html(params["signTime"])
-            $("#date2").html(params["signTime"])
+            var signTime = new Date()
+            var dateStr = signTime.getFullYear() + "年" + (signTime.getMonth() + 1) + "月" + signTime.getDate() + "日"
+            $("#date1").html(dateStr)
+            $("#date2").html(dateStr)
             // Signature1：个人是个人签名，企业是公司章。
             $("#crp_nm").html(isBusiness ? params["merc_cnm"] : params["crp_nm"])
             // 36-39：根据实际情况勾选，勾选38时，39项的填写规则为：“扫码王；台牌；插件；”分号隔开。
@@ -242,11 +246,11 @@ content="telephone=no,date=no,address=no,email=no,url=no"/>
             // 52：商户注册名称，即APP进件的商户名。
             $("#tab_merc_nm").html(params["merc_cnm"])
             // 53：商户注册地址，即APP进件的商户地址（详细地址）。
-            $("#tab_merc_add").html(params["merc_ad"] + params["merc_adds"])
+            $("#tab_merc_add").html(merc_ad + params["merc_adds"])
             // 54：商户经营名称，即APP进件的商户名。
             $("#tab_act_merc_nm").html(params["merc_nm"])
             // 55：填写门店地址。
-            $("#tab_trm_add").html(params["store_ad"] + params["stoe_adds"])
+            $("#tab_trm_add").html(store_ad + params["stoe_adds"])
             // 56:营业执照号码 57：营业执照到期日，注意小微和快速进件不填。
             if (isBusiness) {
                 $("#tab_bus_id").html(params["bus_lic_no"])
@@ -270,6 +274,9 @@ content="telephone=no,date=no,address=no,email=no,url=no"/>
             if (!params["crp_exp_dt_tmp"]) {
                 params["crp_exp_dt_tmp"] = params["crp_end_dt"]
             }
+            if (!params["crp_exp_dt_tmp"]) {
+                params["crp_exp_dt_tmp"] = params["corporate_idlimited"]
+            }
             if (params["corporate_idcord"] == params["icrp_id_no"] || params["icrp_id_no"] == "" || params["icrp_id_no"] == null ) {
                 $("#tab_crp_nm").html(params["crp_nm"])
                 $("#tab_crp_card_id").html(params["corporate_idcord"])
@@ -292,7 +299,7 @@ content="telephone=no,date=no,address=no,email=no,url=no"/>
                 $("#tab_power_card_date").html(params["corporate_idlimited"])
                 
             }
-            $("#tab_act_add").html(params["store_ad"] + params["stoe_adds"])
+            $("#tab_act_add").html(store_ad + params["stoe_adds"])
             // 75-81：根据实际填写，对公结算情况需勾选76。
             $("#tab_settle_nm").html(params["bnk_acnm"])
             $("#tab_settle_pub").html(params["stl_sign"] == "0") // 对公
