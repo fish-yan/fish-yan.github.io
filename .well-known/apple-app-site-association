@@ -1,5 +1,11 @@
 {
-    "webcredentials":{
-        "apps":["7DBZNA5HKE.com.kami.FYInvoice"]
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "K94CPF4L42.cm.YmqXmpro",
+                "paths": [ "*" ]
+            }
+        ]
     }
 }
