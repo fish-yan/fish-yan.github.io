@@ -4,7 +4,7 @@ description: "This is My World"
 ---
 
 {% for post in paginator.posts %}
-{% if post.url %}
+{% if post.title %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-title">
