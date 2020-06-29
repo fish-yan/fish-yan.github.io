@@ -4,6 +4,7 @@ description: "This is My World"
 ---
 
 {% for post in paginator.posts %}
+{% if post.url %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-title">
@@ -23,6 +24,30 @@ description: "This is My World"
     </p>
 </div>
 <hr>
+{% else %}
+{% for p in post %}
+<div class="post-preview">
+    <a href="{{ p.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ p.title }}
+        </h2>
+        {% if p.subtitle %}
+        <h3 class="post-subtitle">
+            {{ p.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ p.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by {% if p.author %}{{ p.author }}{% else %}{{ site.title }}{% endif %} on {{ p.date | date: "%B %-d, %Y" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
+{% endif %}
+
 {% endfor %}
 
 <!-- Pager -->
