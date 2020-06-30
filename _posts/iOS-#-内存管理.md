@@ -142,4 +142,10 @@ struct {
   
 - 散列表：(引用计数表，弱引用表)
   
-  散列表是一个sideTables的哈希映射表，其中所有的引用计数都存在这个表中（除存在NONPOINTER_ISA中的外）sideTables 包含众多sideTable，每个sideTable包含三个元素spinlock_t自旋锁，RefcountMap引用计数表，weak_table_t弱引用表
+  > 散列表是一个sideTables的哈希映射表，其中所有的引用计数都存在这个表中（除存在NONPOINTER_ISA中的外）sideTables 包含众多sideTable，每个sideTable包含三个元素spinlock_t自旋锁，RefcountMap引用计数表，weak_table_t弱引用表
+
+- 当一个对象访问sideTable时
+  - 首先会取得对象地址，将地址进行哈希运算，与sideTabls中的sideTable个数取余，最后得到的结果就是该对象访问的sideTable
+  - 在取得的sideTable中的RefcountMap表中再进行一次哈希运算，找到该对象在引用计数表中的位置
+  - 如果该位置存在对应的引用计数，则对其操作，如果不存在，则创建一个对应的size_t对象，其实就是个uint无符号整型
+  - 弱引用表也是一张哈希表的结构，其内部包含了每个对象对应的弱引用表weak_entry_t，而weak_entry_t是一个结构体数组，其中包含的则是每一个对象弱引用的对象所对应的指针  
