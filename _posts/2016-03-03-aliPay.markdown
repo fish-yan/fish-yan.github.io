@@ -1,0 +1,145 @@
+---
+layout:     post
+title:      "集成支付宝支付(AliPay)详解，防跳坑"
+subtitle:   "现在的支付方式一般有三种, 支付宝, 微信, 网银. 个人觉得最简单易用的还是支付宝, 微信虽然看起来币支付宝要简单,但是后端太麻烦了, 网银就不说了."
+date:       2016-03-03 22:00:00
+author:     "FishYan"
+header-img: "img/blog-header.png"
+ catalog:    true
+tags:
+    - iOS
+    - 支付宝
+---
+
+
+**更新时间:2016/02/22**
+
+现在的支付方式一般有三种, 支付宝, 微信, 网银. 个人觉得最简单易用的还是支付宝, 微信虽然看起来币支付宝要简单,但是后端太麻烦了, 网银就不说了.
+
+先放出官方文档,免得还有人找不到[文档](https://doc.open.alipay.com/doc2/detail?treeId=59&articleId=103563&docType=1)
+
+## 环境搭建
+
+- 下载AliPayDK,[官方链接](http://aopsdkdownload.cn-hangzhou.alipay-pub.aliyun-inc.com/demo/WS_MOBILE_PAY_SDK_BASE.zip?spm=0.0.0.0.y0oP1q&file=WS_MOBILE_PAY_SDK_BASE.zip),更新时间:2016/02/22 : 
+如果下载失败,请换个浏览器(至少我用QQ浏览器没有下载成功)
+
+- 所需文件导入
+
+1.按以下路径
+
+`~/支付宝钱包支付接口开发包2.0标准版(20160120)/DEMO/客户端demo/支付宝钱包支付接口开发包2.0标准版(iOS 15.0.6)`
+
+找到库文件AlipaySDK.framework和资源包AlipaySDK.bundle拖入到你的工程中, 
+
+2.AliSDKDemo中libcrypto.a和libssl.a导入到你的工程
+
+3.~/AliSDKDemo/AliSDKDemo下的openssl文件夹,Util文件夹,Order.h,Order.m拖入工程
+
+**这里有个坑, 很多人都掉进去了, 就是openssl文件夹,Util文件最好放在工程的根目录下!!** 
+
+**如果非不想放根目录那就在修改Header Search Paths的路径, 写成openssl文件夹,Util文件所在的位置**
+
+4.导入以下库
+
+如果是Xcode 7.0之后的版本，需要添加libc++.tbd、libz.tbd；
+如果是Xcode 7.0之前的版本，需要添加libc++.dylib、libz.dylib
+![这里写图片描述](http://img.blog.csdn.net/20160129104208338)</center>
+
+- 工程设置修改
+1.info.plist配置
+如果是iOS9.0之后(Xcode7.0)在info.plist中增加以下字典
+(也可以单独配置,有需要的请看官方文档)
+
+![这里写图片描述](http://img.blog.csdn.net/20160129104835376)
+
+设置Schemes
+在info下 URL Types设置你的Schemes
+
+![这里写图片描述](http://img.blog.csdn.net/20160129105516408)
+
+2.Build Settings配置
+
+以关键字“search”搜索，对“Header Search Paths”增加头文件路径：$(SRCROOT)/项目名称
+
+图上的 $(SRCROOT)/Util不用加, 多余的, 别误解了.
+
+![这里写图片描述](http://img.blog.csdn.net/20160129105215438)
+
+3.这时候编译会报错,错误信息是
+
+`Cannot find interface declaration for 'NSObject', superclass of 'Base64'`
+
+那么需要打开报错了的文件，增加头文件。
+
+`import <Foundation/Foundation.h>`
+
+再编译,就ok了
+
+## 支付信息配置
+
+在需要支付的文件中导入头文件
+
+``` Objc
+#import <AlipaySDK/AlipaySDK.h>
+#import "DataSigner.h"
+#import "Order.h"
+```
+配置订单信息
+
+这些都是示例信息,这些事不能完成支付的,需要将partner, seller, privateKey(必填)以及其他订单信息补全才能跳转到支付宝,
+
+```Objc
+//商户ID
+    NSString *partner = @"";
+    //收款账户
+    NSString *seller = @"";
+    //私钥
+    NSString *privateKey = @"";
+    if (partner.length == 0 || seller.length ==0 || privateKey.length == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"缺少partner或者seller或者私钥。" preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    //订单类
+    Order *order = [[Order alloc]init];
+    order.partner = partner;
+    order.seller = seller;
+    order.tradeNO = @"234927348";//订单号
+    order.productName = @"商品名称";
+    order.productDescription = @"商品描述";
+    order.amount = [NSString stringWithFormat:@"%.2f", 0.01];//价格
+    order.notifyURL =  @"http://blog.csdn.net/fish_yan_?viewmode=list"; //回调网址
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
+    
+    NSString *appScheme = @"xueyan";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            //【callback处理支付结果】
+            NSLog(@"reslut = %@",resultDic);
+        }];
+    }
+```
+就这么多,如果手机装有支付宝客户端, 则直接调用客户端,如果没有客户端则调用网页版
+
+献上我写的一个[demo](https://github.com/fish-yan/AliPay/tree/master), 仅供参考
+
+
+![这里写图片描述](http://img.blog.csdn.net/20160129115559922)
