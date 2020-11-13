@@ -5,7 +5,7 @@ subtitle:   "现在的支付方式一般有三种, 支付宝, 微信, 网银. �
 date:       2016-03-03 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png"
- catalog:    true
+catalog:    true
 tags:
     - iOS
     - 支付宝
