@@ -5,7 +5,7 @@ subtitle:   "iOS 9 学习系列"
 date:       2016-04-06 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png"
- catalog:    true
+catalog:    true
 tags:
     - iOS
     - iOS 9 新特性
