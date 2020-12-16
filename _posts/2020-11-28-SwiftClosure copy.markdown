@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "8. Swift 闭包循环引用问题"
+title:      "Swift 闭包循环引用问题"
 subtitle:   "Swift"
 date:       2020-11-28 22:00:00
 author:     "FishYan"
