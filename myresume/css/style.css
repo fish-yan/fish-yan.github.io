@@ -731,8 +731,9 @@ ul#nav li a:hover {
   letter-spacing: 2px;
   padding-left: 20px;
   position: relative;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
+
 .bar-expand {
    position: absolute;
    left: 0;
@@ -746,59 +747,65 @@ ul#nav li a:hover {
    border-radius: 3px 0 0 3px;
 }
 
-.photoshop {
-  background: #1abc9c;
+.objective-c {
+  background: #34495e;
   width: 80%;
-  	-moz-animation: photoshop 2s ease;
-  	-webkit-animation: photoshop 2s ease;
+  	-moz-animation: objective-c 2s ease;
+  	-webkit-animation: objective-c 2s ease;
 }
-.illustrator {
+.swift {
   background: #e74c3c;
   	width: 80%;
-  	-moz-animation: illustrator 2s ease;
-  	-webkit-animation: illustrator 2s ease;
+  	-moz-animation: swift 2s ease;
+  	-webkit-animation: swift 2s ease;
 }
-.wordpress {
-  background: #34495e;
-  	width: 60%;
-  	-moz-animation: wordpress 2s ease;
-  	-webkit-animation: wordpress 2s ease;
+.android {
+  background: #1abc9c;
+  	width: 50%;
+  	-moz-animation: android 2s ease;
+  	-webkit-animation: android 2s ease;
 }
 .css {
-  background: #3498db;
-  	width: 40%;
+  background: #d35400;
+  	width: 50%;
   	-moz-animation: css 2s ease;
   	-webkit-animation: css 2s ease;
 }
 .html5 {
-  background: #d35400;
-  	width: 40%;
+  background: #9b59b6;
+  	width: 50%;
   	-moz-animation: html5 2s ease;
   	-webkit-animation: html5 2s ease;
 }
-.jquery {
-  background: #9b59b6;
-  	width: 30%;
-  	-moz-animation: jquery 2s ease;
-  	-webkit-animation: jquery 2s ease;
-}
-.XAML {
+.javascript {
   background: #FD9827;
   	width: 50%;
-  	-moz-animation: jquery 2s ease;
-  	-webkit-animation: jquery 2s ease;
+  	-moz-animation: javascript 2s ease;
+  	-webkit-animation: javascript 2s ease;
+}
+.vue {
+  background: #017CE8;
+  	width: 50%;
+  	-moz-animation: vue 2s ease;
+  	-webkit-animation: vue 2s ease;
+}
+.flutter {
+  background: #788BFF;
+  	width: 50%;
+  	-moz-animation: flutter 2s ease;
+  	-webkit-animation: flutter 2s ease;
 }
 
 
-@-moz-keyframes photoshop {
+@-moz-keyframes objective-c {
   0%   { width: 0px;  }
   100% { width: 60%;  }
 }
-@-moz-keyframes illustrator {
+@-moz-keyframes swift {
   0%   { width: 0px;  }
   100% { width: 55%;  }
 }
-@-moz-keyframes wordpress {
+@-moz-keyframes android {
   0%   { width: 0px;  }
   100% { width: 50%;  }
 }
@@ -810,20 +817,28 @@ ul#nav li a:hover {
   0%   { width: 0px;  }
   100% { width: 80%;  }
 }
-@-moz-keyframes jquery {
+@-moz-keyframes javascript {
+  0%   { width: 0px;  }
+  100% { width: 80%;  }
+}
+@-moz-keyframes vue {
+  0%   { width: 0px;  }
+  100% { width: 50%;  }
+}
+@-moz-keyframes flutter {
   0%   { width: 0px;  }
   100% { width: 50%;  }
 }
 
-@-webkit-keyframes photoshop {
+@-webkit-keyframes objective-c {
   0%   { width: 0px;  }
   100% { width: 60%;  }
 }
-@-webkit-keyframes illustrator {
+@-webkit-keyframes swift {
   0%   { width: 0px;  }
   100% { width: 55%;  }
 }
-@-webkit-keyframes wordpress {
+@-webkit-keyframes android {
   0%   { width: 0px;  }
   100% { width: 50%;  }
 }
@@ -835,7 +850,15 @@ ul#nav li a:hover {
   0%   { width: 0px;  }
   100% { width: 80%;  }
 }
-@-webkit-keyframes jquery {
+@-webkit-keyframes javascript {
+  0%   { width: 0px;  }
+  100% { width: 80%;  }
+}
+@-webkit-keyframes vue {
+  0%   { width: 0px;  }
+  100% { width: 50%;  }
+}
+@-webkit-keyframes flutter {
   0%   { width: 0px;  }
   100% { width: 50%;  }
 }
