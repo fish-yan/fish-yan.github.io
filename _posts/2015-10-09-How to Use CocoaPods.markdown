@@ -187,4 +187,8 @@ Pod update
 ```
 等待结束重新运行工程就 OK 了
 
+<<<<<<< HEAD
 ranhou ock
+=======
+testbbbb
+>>>>>>> 89e7b0db62b45234fe7530e7da6f4128751e32aa
