@@ -11,8 +11,6 @@ tags:
     - iOS 动画
 ---
 
-# iOS 动画 Animation-0-6：CALayer十则示例-CAReplicatorLayer
-
 ## CAReplicatorLayer
 
 CAReplicatorLayer能够以特定次数复制图层，可以用来创建一些很棒的效果。

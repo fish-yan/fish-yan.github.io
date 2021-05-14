@@ -10,8 +10,6 @@ tags:
     - UWP
 ---
 
-# 1.1 UWP应用简介
-
 > UWP 是 Universal Windows Platform 的简写，即通用 Windows 平台。
 
 ## 1. 什么是UWP应用

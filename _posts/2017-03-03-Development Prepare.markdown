@@ -12,8 +12,6 @@ tags:
     - Visual Sutdio 2017
 ---
 
-# 1.2 UWP 应用开发准备篇 
-
 ## 1. 工具
 
 - 一台装有 Windows 10 的电脑

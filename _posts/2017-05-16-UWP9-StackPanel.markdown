@@ -10,9 +10,6 @@ tags:
     - UWP
     - Visual Sutdio
 ---
-
-# 3.6 UWP开发 StackPanel布局控件
-
 <video src="http://v1.365yg.com/a1997afc6b9bb34c04b0422fee2c8d88/591a8039/video/m/220e0b389a88bfe4a1198145510dac994ed1146fb0000000d925a371db/" width="700px" height="400px" controls="controls">
 
 </video>

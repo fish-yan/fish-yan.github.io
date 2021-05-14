@@ -11,7 +11,6 @@ tags:
     - iOS 动画
 ---
 
-# iOS 动画 Animation-0：CALayer十则示例"
 
 ![](http://cc.cocimg.com/api/uploads/20150317/1426579343207253.png)
 

@@ -11,8 +11,6 @@ tags:
     - iOS 9 新特性
 ---
 
-# iOS 9 学习系列: Search APIs
-
 >在 iOS9 之前，你只能在 spotlight 中输入关键字，比如应用名字，搜索到应用。在 iOS9 中苹果提供了一套 Search APIs。允许开发者选择应用的内容，索引起来供 spotlight 进行搜索，同时可以设置在 spotlight 中的展示效果，以及点击之后如何响应。
 
 ## 3个新的搜索相关API

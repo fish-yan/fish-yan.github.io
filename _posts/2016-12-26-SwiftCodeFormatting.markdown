@@ -11,8 +11,6 @@ tags:
     - Swift
 ---
 
-# Swift编程规范之 Code Formatting
-
 ## Code Formatting:代码格式化
 
 - 1 使用4个空格来代替Tabs

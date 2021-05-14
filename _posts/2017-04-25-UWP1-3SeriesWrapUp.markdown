@@ -11,7 +11,6 @@ tags:
     - Visual Sutdio 2017
 ---
 
-# 1.3 UWP开发-1 开发准备 Series Wrap Up
 
 <video src="http://v6.365yg.com/video/m/220bc9a833cc3ef4bd280405bf1b32e337c1146156000039b6e2fbea35/?Expires=1493189756&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=BcQqaj%2BbygPUfVF6LGkBDJWDbZU%3D" controls="controls">
 

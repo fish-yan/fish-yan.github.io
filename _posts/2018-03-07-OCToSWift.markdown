@@ -11,9 +11,7 @@ tags:
     - Swift
 ---
 
-# 一眼看穿 swift （从 OC 转来 Swift）
-
-# #Swift
+# Swift
 
 ### let, var 
 ---

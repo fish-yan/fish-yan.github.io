@@ -10,9 +10,6 @@ tags:
     - UWP
     - Visual Sutdio
 ---
-
-# 3.7 UWP开发 复习：XAML和布局控件
-
 <video src="http://v1.365yg.com/84a10e373e921a75fe61a9cddb962370/591bc6f2/video/m/2203cdffda1bad24bcd9894d1a042cc0b9a1146ff3000003f61328876b/" width="700px" height="400px" controls="controls">
 
 </video>

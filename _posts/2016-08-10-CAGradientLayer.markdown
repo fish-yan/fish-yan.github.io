@@ -11,8 +11,6 @@ tags:
     - iOS 动画
 ---
 
-# iOS 动画 Animation-0-5：CALayer十则示例-CAGradientLayer
-
 ## CAGradientLayer
 
 CAGradientLayer简化了混合两种或更多颜色的工作，尤其适用于背景。要配置渐变色，你需要分配一个CGColor数组，以及标识渐变图层起止点的startPoint和endPoint。

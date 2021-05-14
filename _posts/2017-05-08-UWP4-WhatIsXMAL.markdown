@@ -12,8 +12,6 @@ tags:
     - XAML
 ---
 
-# 3.1 UWP开发 什么是XAML
-
 <video src="http://v6.365yg.com/video/m/2205e083b990e344aecb7a714434eddb03e11469e100003290ca242176/?Expires=1494219312&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=BMDhVcg8hUYuMqpjhyZnEx496YQ%3D" width="700px" height="400px" controls="controls">
 
 </video>

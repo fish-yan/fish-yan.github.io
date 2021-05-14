@@ -11,8 +11,6 @@ tags:
     - Swift
 ---
 
-# OC 条件编译 & Swift 条件编译
-
 ## OC条件编译
 - 新增一个Scheme
 - Project => Info 复制Degbu和Release编译模式

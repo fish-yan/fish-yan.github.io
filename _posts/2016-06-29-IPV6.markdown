@@ -10,8 +10,6 @@ tags:
     - iOS
 ---
 
-# iOS开发：关于IPV6
-
 ![这里写图片描述](http://img.blog.csdn.net/20160619091717737)
 
 >IPv6是IETF(Internet Engineering Task Force 译：互联网工程任务组)设计的用于替代现行版本IP协议-IPv4-的下一代IP协议，它由128位二进制数码表示。苹果从6月1好开始执行APP都要支持IPV6网络

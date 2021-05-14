@@ -11,8 +11,6 @@ tags:
     - Swift
 ---
 
-# 8. Swift 访问权限
-
 ## 基础篇
 > 注: 下文中所提及的类和类型为Class, Enum和Struct
 

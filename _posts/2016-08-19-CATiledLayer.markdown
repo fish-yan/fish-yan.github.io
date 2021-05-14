@@ -11,7 +11,6 @@ tags:
     - iOS 动画
 ---
 
-# iOS 动画 Animation-0-7：CALayer十则示例-CATiledLayer
 
 ## CATiledLayer
 

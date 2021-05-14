@@ -10,8 +10,6 @@ tags:
     - iOS
 ---
 
-# 断点下载
-
 其实系统提供的下载并不算困难, 也许以前使用NSURLConnection确实有点麻烦, 但是苹果推出的NSSURLSession并不复杂,用起来也比较简单. 
 
 - 1.首先用到一个代理就是NSURLSessionDownloadDelegate

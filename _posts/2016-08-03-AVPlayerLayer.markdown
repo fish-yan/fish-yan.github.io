@@ -11,8 +11,6 @@ tags:
     - iOS 动画
 ---
 
-# iOS 动画 Animation-0-4：CALayer十则示例-AVPlayerLayer
-
 ## AVPlayerLayer
 
 AVPlayerLayer是建立在AVFoundation基础上的实用图层，持有一个AVPlayer，用来播放音视频媒体文件（AVPlayerItems），举例如下：

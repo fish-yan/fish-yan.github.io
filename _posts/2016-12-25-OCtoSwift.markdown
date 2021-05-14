@@ -11,8 +11,6 @@ tags:
     - Swift
 ---
 
-# 优雅的从Objective-C转向Swift
-
 > 从2014年WWDC发布Swift至今已经有两年的时间了，Swift的发展可谓是十分迅速，能不能替代Objective-C我不敢说，但是由于Swift相对于Objective-C存在的多方面优势，逐渐成为iOS和Mac开发的主要语言是毋庸置疑的。
 
 ## Swift最新资讯

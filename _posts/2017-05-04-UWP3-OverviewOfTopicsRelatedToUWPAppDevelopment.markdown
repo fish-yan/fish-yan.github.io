@@ -11,8 +11,6 @@ tags:
     - Visual Sutdio
 ---
 
-# 2.2 UWP开发 UWP开发相关内容概述
-
 <video src="http://v3.365yg.com/dc1a989c6d9dae7d39c9628d3692d17e/590d2e3f/video/m/22099e1dc75f8f74f0d994e0ad2037aa1b711465f0000036f37d161356/" width="700px" height="400px" controls="controls">
 
 </video>
