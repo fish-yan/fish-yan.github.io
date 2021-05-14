@@ -11,6 +11,8 @@ tags:
     - iOS 9 新特性
 ---
 
+# iOS 9 学习系列: UIStack View
+
 > 在 iOS9 中，Apple 引入了 UIStackView，他让你的应用可以通过简单的方式，纵向或横向的叠放你的 views。UIStackView 采用 auto layout 的方式来管理他的子视图的位置和尺寸。让你更简单的构建自适应的 UI。
 
 如果在 iOS9 之前，你想要创建类似 UIStackView 为你提供的这种布局，你需要构建大量的 constraints。你需要编辑许多诸如边距、高度、x/y 轴的位置，还有它们的依赖关系等。

@@ -11,6 +11,8 @@ tags:
     - iOS 9 新特性  
 ---
 
+# iOS 9 学习系列：Contacts Framework
+
 iOS 9 中，苹果介绍了新的 Contacts framework。允许用户使用 swift 的 API 和设备的通讯录进行交互，同样适用于 Swift 语言。比起之前通过 AddressBook framework 来读取联系人信息来说，这是一个巨大的进步。因为 AddressBook framework 没有 swift 的 API，非常难用，用 Swift 写的时候更是痛苦。希望新的 Contacts framework 能够解决这些痛点。
 
 开发者有多不喜欢 AddressBook framework 呢？我想在 WWDC 的相关 session 里，当宣布 AddressBook framework 会在 iOS 9 中弃用后，现场爆发了最长时间、最大声的欢呼，就是最好的证明。

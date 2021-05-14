@@ -12,7 +12,7 @@ tags:
     - Translation
 ---
 
-## Swift 4 进入最后阶段， 推迟API稳定
+# Swift 4 进入最后阶段， 推迟API稳定
 
  >Write by [Sergio De Simone](Author) on Feb 23, 2017; Frome [InfoQ](Source)
 

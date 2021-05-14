@@ -10,6 +10,9 @@ tags:
     - UWP
     - Visual Sutdio
 ---
+
+# 3.8 UWP开发 实战训练：做一个好看的页面
+
 <video src="http://v3.365yg.com/55fa51c854e9140aea909887ffe7863e/591d6e0f/video/m/2207966053e2d1b4587948232b2ad678fb1114701400003d5a086beeb2/" width="700px" height="400px" controls="controls">
 
 </video>

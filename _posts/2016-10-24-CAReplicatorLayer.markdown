@@ -11,6 +11,8 @@ tags:
     - iOS 动画
 ---
 
+# iOS 动画Animation-4-4: CALayer子类：CAReplicatorLayer
+
 >首先说明：这是一系列文章，参考本专题下其他的文章有助于你对本文的理解。
 
 上一片介绍了CAShpeLayer，并且做了两个示例，如果创造力比较强，就那些东西可以创造出你以前不敢想象的动画效果。

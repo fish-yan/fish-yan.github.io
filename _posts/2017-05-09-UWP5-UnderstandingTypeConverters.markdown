@@ -12,6 +12,8 @@ tags:
     - XAML
 ---
 
+# 3.2 UWP开发 类型转换
+
 <video src="http://v3.365yg.com/4f28af989f3a4ad1fe460e17e3d652e3/59113c91/video/m/2203b87f2c1c3a848cc8e9991e381f4bd5c1146962000031e1f94847c4/" width="700px" height="400px" controls="controls">
 
 </video>

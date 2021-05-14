@@ -11,6 +11,9 @@ tags:
     - Visual Sutdio
     - XAML
 ---
+
+# 3.4 UWP开发 理解XAML Schemas和Namespace
+
 <video src="http://v6.365yg.com/video/m/220e63153ad34d34d649d2f394b1a19972f11469310000415b63efa65a/?Expires=1494485017&AWSAccessKeyId=qh0h9TdcEMoS2oPj7aKX&Signature=DVQMegd%2BlHkNdQzhfjqu0oUHl2U%3D" width="700px" height="400px" controls="controls">
 
 </video>
