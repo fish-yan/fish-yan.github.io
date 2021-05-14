@@ -1,5 +1,5 @@
 ---
-layout:     post
+layout:     keynote
 title:      "OC 条件编译 & Swift 条件编译"
 subtitle:   "Swift"
 date:       2021-05-14 22:00:00
