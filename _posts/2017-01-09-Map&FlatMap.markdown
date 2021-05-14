@@ -11,6 +11,8 @@ tags:
     - Swift
 ---
 
+# Swift中的map 和 flatMap 原理及用法
+
 map 和 flatMap 是 Swift 中两个常用的函数，它们体现了 Swift 中很多的特性。对于简单的使用来说，它们的接口并不复杂，但它们内部的机制还是非常值得研究的，能够帮助我们够好的理解 Swift 语言。
 
 map 简介

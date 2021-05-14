@@ -11,6 +11,8 @@ tags:
     - iOS 9 新特性
 ---
 
+# iOS 9 学习系列: UIKit Dynamics
+
 >UIKit Dynamics 在 iOS 7 中首次被介绍的，可以让开发者通过简单的方式，给应用界面添加模拟物理世界的交互动画。iOS 9 中又加入了一些大的改进，我们将在本文中查看一些。
 
 ## Non-Rectangular Collision Bounds

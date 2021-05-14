@@ -11,6 +11,8 @@ tags:
     - iOS 动画
 ---
 
+# iOS 动画Animation-4-2: CALayer子类：CAGradientLayer，CATextLayer，CATiledLayer
+
 >首先说明：这是一系列文章，参考本专题下其他的文章有助于你对本文的理解。
 
 在上一篇中对CALayer做了一个简单的介绍。CALayer的属性在这些子类身上也都有。如果对CALayer属性还不够了解，可以参照上一篇。

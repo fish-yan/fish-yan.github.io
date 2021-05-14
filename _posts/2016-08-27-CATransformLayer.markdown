@@ -11,6 +11,8 @@ tags:
     - iOS 动画
 ---
 
+# iOS 动画 Animation-0-9：CALayer十则示例-CATransformLayer
+
 ## CATransformLayer
 
 CATransformLayer不像其他图层类一样把子图层结构平面化，故适宜绘制3D结构。变换图层本质上是一个图层容器，每个子图层都可以应用自己的透明度和空间变换，而其他渲染图层属性（如边宽、颜色）会被忽略。

@@ -11,6 +11,7 @@ tags:
     - iOS 9 新特性
 ---
 
+# iOS 9 学习系列: Storyboard References
 
 >如果你曾经使用 interface builder 创建过一个复杂、界面非常多的应用，你就会明白最后那些Storyboards 文件变的有多大。他会迅速变的无法管理，阻碍你的进度。自从引入 Storyboard 以来，其实是可以把你的应用的不同模块切开到不同的 Storyboard 中的。在过去，这要手动创建多个 Storyboard 文件，并且要写大量的代码。
 

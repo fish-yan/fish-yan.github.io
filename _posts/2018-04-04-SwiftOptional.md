@@ -11,6 +11,8 @@ tags:
     - Swift
 ---
 
+# 3. Swift 中的可选值
+
 > Swift 中较为重要的就是可选值的加入。这也使 Swift 更加灵活，同时也保证了尽可能少的出错。区别于 OC，在 OC 中没有可选类型这一概念，所有的类型都有可能存在为 nil 的情况，但是在 Swift 中，在声明一个实例的时候就可以告诉他是否可以为 nil。
 
 比如在 OC 中声明```NSString *str = nil```是完全没有问题的，但是在 Swift 中，如果你声明 ```let str: String = nil``` 这样是一定会报错的，因为在声明的时候已指定了 str 的类型为 String，而不能为 nil。那么要怎么声明一个可以为 nil 的实例呢？```let str: String? = nil```, ```?```表示了这个实例可以为 nil。

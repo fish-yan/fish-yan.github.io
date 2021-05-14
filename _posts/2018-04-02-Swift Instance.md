@@ -11,6 +11,8 @@ tags:
     - Swift
 ---
 
+# 1. Swift 中的 let 和 var
+
 > Swift 中的变量声明相对于 OC 中简化了很多。可变与不可变取决于声明的方式，不在取决于类型了，这样简化了很多不必要的类型。比如 OC 中可变的为 NSMutableArray，不可变的是 NSArray，而 Swift 中的数组不管可变与不可变就是 Array 。
 
 ## Swift 中变量的声明

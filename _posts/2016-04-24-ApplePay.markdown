@@ -11,6 +11,8 @@ tags:
     - iOS 9 新特性
 ---
 
+# iOS 9 学习系列: Apple Pay
+
 >Apple Pay 是在 iOS 8 中第一次被介绍，它可以为你的应用中的实体商品和服务，提供简单、安全、私密的支付方式。它使得用户支付起来非常简便，只需按一下指纹就可以授权进行交易。
 
 Apple Pay 只能在特定的设备上使用，目前为止，这些设备包括 iPhone 6, iPhone 6+, iPad Air 2, iPad mini 3. 这是因为 Apple Pay 需要特定的硬件芯片来支持，这个硬件叫做 Secure Element （简称SE，安全元件）,他可以用来存储和加解密信息。

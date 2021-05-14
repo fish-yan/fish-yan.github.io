@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      " CocoaPods 安装和使用教程"
-subtitle:   " CocoaPods 是一款特别好用的第三方SDK管理工具，如果还没有开始使用的童鞋，一定要赶紧用起来了。"
+title:      "CocoaPods 安装和使用教程"
+subtitle:   "CocoaPods 是一款特别好用的第三方SDK管理工具，如果还没有开始使用的童鞋，一定要赶紧用起来了。"
 date:       2015-10-09 22:00:00
 author:     "FishYan"
 header-img: "img/blog-header.png" 
@@ -11,12 +11,13 @@ tags:
     - CocoaPods
     - iOS 开发工具
 ---
+# CocoaPods 安装和使用教程
 
 > 在网上看到有很多cocoapods的安装使用教程,但是写的时间都比较久远了,有部分不太完美,这些只是把网络上的收集整理简化一下,只要按照步骤操作,就能成功安装cocoapods;祝大家安装成功!
 
-# 1. CocoaPods 的安装
+## 1. CocoaPods 的安装
 
-## 步骤1 － 安装 RVM
+### 步骤1 － 安装 RVM
 ```RVM``` 是干什么的这里就不解释了，后面你将会慢慢搞明白。
 
 ```
@@ -41,7 +42,7 @@ rvm 1.26.11 (latest) by Wayne E. Seguin
 <wayneeseguin@gmail.com>, Michal Papis <mpapis@gmail.com> [https://rvm.io/]
 ```
 
-## 步骤2 － 用 RVM 安装 Ruby 环境
+### 步骤2 － 用 RVM 安装 Ruby 环境
 
 ```
 $ rvm install 2.0.0
@@ -49,7 +50,7 @@ $ rvm install 2.0.0
 同样继续等待漫长的下载，编译过程，完成以后，Ruby, Ruby Gems 就安装好了。
 漫长,漫长……
 
-## 步骤3 － 设置 Ruby 版本
+### 步骤3 － 设置 Ruby 版本
 
 RVM 装好以后，需要执行下面的命令将指定版本的 Ruby 设置为系统默认版本
 ```
@@ -68,7 +69,7 @@ ruby 2.0.0p643 (2015-02-25 revision 49749) [x86_64-darwin14.1.0]
 $ gem -v
 ```
 
-## 步骤4 － 安装 CocoaPods
+### 步骤4 － 安装 CocoaPods
 
 如果你在天朝，在终端中敲入这个命令之后，会发现半天没有任何反应。原因无他，因为那堵墙阻挡了```cocoapods.org```
 所以要更换一下镜像,用淘宝的镜像;
@@ -99,7 +100,7 @@ $ sudo gem install cocoapods
 在安装过程中可能会出现安装失败的情况,不要担心,多试几遍就OK了/微笑
 
 
-# 第二部分: CocoaPods 的使用
+## 第二部分: CocoaPods 的使用
 
 ## 场景1:利用 CocoaPods, 在项目中导入第三方类库;
 

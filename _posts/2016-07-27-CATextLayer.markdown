@@ -11,6 +11,8 @@ tags:
     - iOS 动画
 ---
 
+# iOS 动画 Animation-0-3：CALayer十则示例-CATextLayer
+
 ## CATextLayer
 
 CATextLayer能够对普通文本或属性字串进行简单快速的渲染。与UILabel不同，CATextLayer无法指定UIFont，只能使用CTFontRef或CGFontRef。
