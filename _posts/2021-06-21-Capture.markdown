@@ -1,0 +1,149 @@
+---
+layout:     post
+title:      "相机扫码设置及优化"
+subtitle:   "Swift"
+date:       2021-06-21 22:00:00
+author:     "FishYan"
+header-img: "img/blog-header.png" 
+catalog:    true
+tags:
+    - iOS
+    - Swift
+---
+
+# 相机扫码设置及优化
+
+## 使用 AVFoundation 进行相机扫码
+> 优点：扫码速度快，复杂二维码或条码识别率高
+>
+> 缺点：当同时设置条码和二维码识别时，条码识别只能在中心区域识别（范围比较小）详见：[Technical Note TN2325](https://developer.apple.com/library/ios/technotes/tn2325/_index.html)
+
+### session input output 设置
+```swift
+// session.sessionPreset 建议设置为 high 能提高识别速度
+if session.canSetSessionPreset(.high) {
+    session.sessionPreset = .high
+}
+// 设置device 及 input
+device = AVCaptureDevice.default(for: .video)
+guard let d = device,
+        let input = try? AVCaptureDeviceInput(device: d)
+else {
+    DispatchQueue.main.async {
+        self.initCompletion?(false)
+    }
+    return
+}
+if session.canAddInput(input) { session.addInput(input) }
+// 设置 output 设置为 AVCaptureMetadataOutput 
+output.setMetadataObjectsDelegate(self, queue: .main)
+if session.canAddOutput(photoOutput) { session.addOutput(photoOutput) }
+// 设置 metadataObjectTypes
+metaOutput.metadataObjectTypes = []
+// metadataOutput 代理
+public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    if metadataObjects.isEmpty { return }
+    guard isScanning,
+            let object = metadataObjects.first! as? AVMetadataMachineReadableCodeObject else {
+        return
+    }
+    stop()
+}
+```
+
+```swift
+// CALayer 代理及 CAAction代理
+extension ScanCaptureUtils: CAAction, CALayerDelegate {
+    func action(for layer: CALayer, forKey event: String) -> CAAction? {
+        CATransaction.setAnimationDuration(0)
+        if event == kCAOnOrderIn || event == kCAOnOrderOut {
+            return self
+        }
+        return nil
+    }
+
+    func run(forKey event: String, object anObject: Any, arguments dict: [AnyHashable: Any]?) {
+        if event == kCAOnOrderIn {
+            if skipIn {
+                skipIn = false
+                return
+            }
+            start()
+        } else if event == kCAOnOrderOut {
+            if skipOut {
+                skipOut = true
+                return
+            }
+            stop()
+        }
+    }
+}
+```
+基本设置过程比较简单
+
+### 注意点
+- sessionPreset： 设置 high 高质量有助于提高识别速度
+- rectOfInterest： 设置准确的 rectOfInterest 有助于提高识别速度，二维码和条码同时存在时只对条码有效。
+- rectOfInterest 的范围是（0，0，1，1），可以在设置 previewLayer frame 后用 captureDevicePointConverted 转换，
+> reactOfInterest 的实际区域(top/previewLayer.height, right/previewLayer.width, height/previewLayer.height, width/previewLayer.width)
+- previewLayer 的设置应该在 viewDidLayoutSubviews 设置
+- metadataObjectTypes 设置应在添加output之后
+- metadataObjectTypes 同时设置qrcode和barcode后使barcode识别区域锁定为中心点区域，导致条码识别范围变小。详见：[Technical Note TN2325](https://developer.apple.com/library/ios/technotes/tn2325/_index.html)。可区分场景分别设置qrcode和barcode提高条码识别速度。
+- metadataObjectTypes 条码类型众多，去除不必要的条码类型有助于加快条码识别速度，各种条码类型作用参考[条码常见类型及介绍](http://www.360doc.com/content/10/0930/10/2253571_57491150.shtml)
+- 扫描结果最好自己做判断，防止结果多次回调。
+- 相机的 start 和 stop 可以在页面 onOrderIn 和 onOrderOut 时处理，优势是不用手动管理相机的开启和停止。
+- onOrderIn 和 onOrderOut 需要设置CALayer delegate 及 CAAction delegate 参考以上代码块
+> 注意 CALayer delegate 在 iOS12 及以下系统 deinit 后会因野指针 crash，可能在 deinit 后，又使用了 CALayer的delegate，解决方案：1.deinit时将delegate = nil，2.将delegate 指定为暂不会被释放的对象。
+- 相机的 start 和 stop 应在子线程中进行，防止卡住UI
+
+
+## 使用 ZXing 扫码
+> ZXing 是使用相机的 video 模式，将每一帧拿去解码，返回结果
+>
+> 优点：条码识别范围更大
+>
+> 缺点：条码及二维码的识别效率低于 AVFoundation，复杂条码或二维码无法识别
+
+```swift
+capture = ZXCapture()
+guard let _capture = self.capture else { return }
+_capture.camera = _capture.back()
+_capture.focusMode = .continuousAutoFocus
+preview?.layer.insertSublayer(_capture.layer, at: 0)
+_capture.layer.frame = UIScreen.main.bounds
+_capture.delegate = self
+_capture.sessionPreset = AVCaptureSession.Preset.high.rawValue
+if let layer = _capture.layer as? AVCaptureVideoPreviewLayer {
+    layer.connection?.videoOrientation = .portrait
+}
+```
+
+```swift
+private func updateMetaType() {
+    guard let _capture = self.capture else { return }
+    allcodeFormats.forEach { _capture.hints.removePossibleFormat($0) }
+    let types: [ZXBarcodeFormat]
+    switch scanType {
+    case .all:
+        types = barcodeFormats + qrcodeFormats
+    case .qrcode:
+        types = qrcodeFormats
+    case .barcode:
+        types = barcodeFormats
+    case .none:
+        types = []
+    }
+    types.forEach { _capture.hints.addPossibleFormat($0) }
+}
+```
+
+与AVFoundation类似，设置需要设置 device，layer，delegate，sessionPreset，帮我们简化了一些设置。
+
+### 注意点
+- capture?.rotation 的设置需要借助 陀螺仪 CMMotionManager 的计算，使条码横屏和竖屏下都能识别
+- CMMotionManager 在不使用时需要停止
+- 因为ZXing 有默认的扫码类型的设置，在设置扫码类型时需要先清空 ZXBarcodeFormat 
+- ZXing 不支持空的扫码类型，扫码类型为空时就会默认加上默认的扫码类型。
+- ZXing 在 onOrderIn 和 onOrderOut 时会调用 startStop，运行或停止相机。额外的手动调用停止相机反而会让相机重新运行。
+- ZXing 也使用的CALayer的 delegate，iOS12及以下存在同样的野指针问题。
+- ZXing lastScannedImage 获取最后一帧图片。
