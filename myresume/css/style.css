@@ -796,6 +796,13 @@ ul#nav li a:hover {
   	-webkit-animation: flutter 2s ease;
 }
 
+.rn {
+  background: #ff542a;
+  	width: 50%;
+  	-moz-animation: flutter 2s ease;
+  	-webkit-animation: flutter 2s ease;
+}
+
 
 @-moz-keyframes objective-c {
   0%   { width: 0px;  }
