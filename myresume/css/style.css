@@ -749,13 +749,13 @@ ul#nav li a:hover {
 
 .objective-c {
   background: #34495e;
-  width: 80%;
+  width: 90%;
   	-moz-animation: objective-c 2s ease;
   	-webkit-animation: objective-c 2s ease;
 }
 .swift {
   background: #e74c3c;
-  	width: 80%;
+  	width: 90%;
   	-moz-animation: swift 2s ease;
   	-webkit-animation: swift 2s ease;
 }
