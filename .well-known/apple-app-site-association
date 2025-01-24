@@ -1,11 +1,14 @@
 {
     "applinks": {
-        "apps": ["QXWB3CM2YU.com.smico.testSwiftabc"],
+        "apps": [],
         "details": [
             {
                 "appID": "QXWB3CM2YU.com.smico.testSwiftabc",
                 "paths": [ "*" ]
             }
         ]
+    },
+    "webcredentials": {
+        "apps": ["QXWB3CM2YU.com.smico.testSwiftabc"]
     }
 }
