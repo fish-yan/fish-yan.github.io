@@ -3,12 +3,12 @@
         "apps": [],
         "details": [
             {
-                "appID": "QXWB3CM2YU.com.smico.testSwiftabc",
+                "appID": "QXWB3CM2YU.com.smico.testSwiftabcd",
                 "paths": [ "*" ]
             }
         ]
     },
     "webcredentials": {
-        "apps": ["QXWB3CM2YU.com.smico.testSwiftabc"]
+        "apps": ["QXWB3CM2YU.com.smico.testSwiftabcd"]
     }
 }
