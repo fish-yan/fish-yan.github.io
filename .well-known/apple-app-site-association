@@ -1,9 +1,9 @@
 {
     "applinks": {
-        "apps": [],
+        "apps": ["QXWB3CM2YU.com.smico.testSwiftabc"],
         "details": [
             {
-                "appID": "K94CPF4L42.cm.YmqXmpro",
+                "appID": "QXWB3CM2YU.com.smico.testSwiftabc",
                 "paths": [ "*" ]
             }
         ]
