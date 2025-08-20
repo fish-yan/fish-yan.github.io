@@ -3,6 +3,13 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Open ONTO</title>
+    <link rel="icon" href="https://app.ont.io/ontoMsgPic/onto.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OPEN ONTO">
+    <link rel="apple-touch-icon" href="https://app.ont.io/ontoMsgPic/onto.png">
+
     <style>
         body {
             margin: 0;
@@ -18,14 +25,20 @@
             font-size: 4rem;
             text-align: center;
             text-decoration: none;
+            color: white;
+            background-color: #007aff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 
 <body>
-    <a href="https://link.onto.app">OPEN ONTO</a>
+    <a href="https://link.onto.app">Open ONTO</a>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             setTimeout(() => {
                 window.location.href = "ontoprovider://link"
             }, 500);
