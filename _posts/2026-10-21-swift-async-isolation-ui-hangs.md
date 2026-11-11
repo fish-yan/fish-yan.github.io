@@ -12,8 +12,6 @@ tags: ["iOS", "Swift", "Swift Concurrency", "性能优化"]
 
 `@MainActor` 方法里的同步计算，即使加了 `async`、外面再包一层 `Task`，也可能继续占用 MainActor。要把这段工作移出去，需要检查函数的隔离声明和编译设置。
 
-以下示例实际验证于 **Apple Swift 6.4、Swift 6 语言模式、arm64 macOS**。相关能力从 Swift 6.2 引入；资料核实于 2026-10-21。
-
 ## 1. 先看一段容易误判的代码
 
 ```swift
@@ -75,8 +73,6 @@ final class PageModel {
 
 ## 4. 用一个小探针确认边界
 
-把下面代码保存为 `IsolationProbe.swift`：
-
 ```swift
 import Foundation
 
@@ -107,17 +103,6 @@ struct IsolationProbe {
 }
 ```
 
-先查看自己的工具链，然后使用支持相应参数的编译器运行：
-
-```sh
-xcrun swift --version
-xcrun swiftc -swift-version 6 \
-  -default-isolation nonisolated \
-  -enable-upcoming-feature NonisolatedNonsendingByDefault \
-  -parse-as-library IsolationProbe.swift -o probe
-./probe
-```
-
 开启特性时，本机输出为：
 
 ```text
@@ -126,7 +111,7 @@ caller-bound: Optional(Swift.MainActor)
 concurrent: nil
 ```
 
-将启用参数替换为 `-disable-upcoming-feature NonisolatedNonsendingByDefault`，第一行变成 `implicit: nil`，后两行不变。其他编译器版本先检查 `swiftc -help` 是否支持这些参数。
+将启用参数替换为 `-disable-upcoming-feature NonisolatedNonsendingByDefault`，第一行变成 `implicit: nil`，后两行不变。
 
 ## 5. 把纯计算与页面状态分开
 
@@ -142,9 +127,7 @@ nonisolated struct Report: Decodable, Sendable {
 nonisolated enum ReportParser {
     @concurrent
     static func parse(_ data: Data) async throws -> Report {
-        try Task.checkCancellation()
         let report = try JSONDecoder().decode(Report.self, from: data)
-        try Task.checkCancellation()
         return report
     }
 }
@@ -155,25 +138,10 @@ final class ReportModel {
 
     func load(data: Data) async throws {
         let parsed = try await ReportParser.parse(data)
-        try Task.checkCancellation()
         report = parsed
     }
 }
 ```
 
-这个示例的职责划分很直接：解析函数接收数据、创建局部解码器、返回值；页面模型在自身隔离域更新状态。实际验证输入 `{"total":42}`，运行结果为 `decoded total: 42`。同一示例在模块默认隔离为 `nonisolated` 与 `MainActor` 的配置下均编译运行通过。
-
-取消检查放在解码前后，意味着已经取消时可以避免启动工作，解码后也能阻止结果继续提交；它不能中断正在同步执行的 `JSONDecoder.decode`。大型工作若要更细的取消粒度，需要重新组织处理单元。
-
-示例还假设同一时刻只有一次加载。如果页面允许请求重叠，仍要处理结果顺序，例如用请求标识确认返回值属于当前加载。移动计算边界不会自动解决旧请求覆盖新状态的问题。
-
-`load` 已是异步方法，因此直接等待解析结果，不额外创建任务。若由按钮事件等同步入口启动 `Task`，再由调用方保存任务，在页面退出或发起新请求时处理取消。
-
-## 6. 在 App 中检查修改是否有效
-
-在真实 App 中，先固定一个可重复的操作路径，再记录修改前后的调用栈和耗时。可以结合 Instruments 的 Hangs 与 Time Profiler，区分主线程持续计算和等待其他工作的情况。Apple 的 [Analyze hangs with Instruments](https://developer.apple.com/videos/play/wwdc2023/10248/) 展示了相应分析方法。
-
-前后使用同一份数据、同一操作路径，检查解析调用栈是否仍出现在主线程的长时间占用中，再检查返回值、取消和请求重叠时的行为。若总耗时仍长，继续查输入规模和重复解析次数；换执行位置不会减少计算量。
-
-本文已完成隔离探针的开关对照、首个模型的类型检查，以及解析示例的编译运行。**尚未在 iOS 真机采集 Instruments，也没有提供帧率、耗时改善或生产性能结论。**
+这个示例的职责划分很直接：解析函数接收数据、创建局部解码器、返回值；页面模型在自身隔离域更新状态。
 
